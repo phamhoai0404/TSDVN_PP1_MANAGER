@@ -31,13 +31,14 @@ namespace GUI_MAIN
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmFormChild));
             this.panel1 = new System.Windows.Forms.Panel();
-            this.lblAddress = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.lblAddress = new System.Windows.Forms.Label();
             this.grpMain = new System.Windows.Forms.GroupBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.btnCloseChild = new System.Windows.Forms.Button();
             this.btnAddChild = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.lblDate = new System.Windows.Forms.Label();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.rdoNG = new System.Windows.Forms.RadioButton();
             this.rdoOK = new System.Windows.Forms.RadioButton();
@@ -45,6 +46,8 @@ namespace GUI_MAIN
             this.txtResistor = new System.Windows.Forms.TextBox();
             this.txtVoltage = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
@@ -56,9 +59,6 @@ namespace GUI_MAIN
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel4 = new System.Windows.Forms.Panel();
             this.lblSum = new System.Windows.Forms.Label();
-            this.lblDate = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.grpMain.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -80,18 +80,6 @@ namespace GUI_MAIN
             this.panel1.Size = new System.Drawing.Size(848, 102);
             this.panel1.TabIndex = 5;
             // 
-            // lblAddress
-            // 
-            this.lblAddress.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.lblAddress.AutoSize = true;
-            this.lblAddress.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAddress.Location = new System.Drawing.Point(89, 32);
-            this.lblAddress.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.lblAddress.Name = "lblAddress";
-            this.lblAddress.Size = new System.Drawing.Size(69, 25);
-            this.lblAddress.TabIndex = 9;
-            this.lblAddress.Text = "VITRI";
-            // 
             // label3
             // 
             this.label3.Anchor = System.Windows.Forms.AnchorStyles.Top;
@@ -103,6 +91,18 @@ namespace GUI_MAIN
             this.label3.Size = new System.Drawing.Size(472, 42);
             this.label3.TabIndex = 9;
             this.label3.Text = "Danh sách dữ liệu vị trí kệ";
+            // 
+            // lblAddress
+            // 
+            this.lblAddress.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.lblAddress.AutoSize = true;
+            this.lblAddress.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAddress.Location = new System.Drawing.Point(89, 32);
+            this.lblAddress.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.lblAddress.Name = "lblAddress";
+            this.lblAddress.Size = new System.Drawing.Size(69, 25);
+            this.lblAddress.TabIndex = 9;
+            this.lblAddress.Text = "VITRI";
             // 
             // grpMain
             // 
@@ -170,6 +170,18 @@ namespace GUI_MAIN
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(840, 132);
             this.panel2.TabIndex = 0;
+            // 
+            // lblDate
+            // 
+            this.lblDate.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.lblDate.AutoSize = true;
+            this.lblDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDate.Location = new System.Drawing.Point(89, 75);
+            this.lblDate.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.lblDate.Name = "lblDate";
+            this.lblDate.Size = new System.Drawing.Size(69, 25);
+            this.lblDate.TabIndex = 9;
+            this.lblDate.Text = "VITRI";
             // 
             // groupBox5
             // 
@@ -245,6 +257,24 @@ namespace GUI_MAIN
             this.label8.Size = new System.Drawing.Size(63, 18);
             this.label8.TabIndex = 3;
             this.label8.Text = "Ghi chú:";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(16, 77);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(46, 18);
+            this.label4.TabIndex = 4;
+            this.label4.Text = "Ngày:";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(16, 37);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(40, 18);
+            this.label2.TabIndex = 4;
+            this.label2.Text = "Vị trí:";
             // 
             // label7
             // 
@@ -353,36 +383,6 @@ namespace GUI_MAIN
             this.lblSum.Size = new System.Drawing.Size(82, 18);
             this.lblSum.TabIndex = 1;
             this.lblSum.Text = "Số bản ghi:";
-            // 
-            // lblDate
-            // 
-            this.lblDate.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.lblDate.AutoSize = true;
-            this.lblDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDate.Location = new System.Drawing.Point(89, 75);
-            this.lblDate.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.lblDate.Name = "lblDate";
-            this.lblDate.Size = new System.Drawing.Size(69, 25);
-            this.lblDate.TabIndex = 9;
-            this.lblDate.Text = "VITRI";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(16, 37);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(40, 18);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "Vị trí:";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(16, 77);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(46, 18);
-            this.label4.TabIndex = 4;
-            this.label4.Text = "Ngày:";
             // 
             // frmFormChild
             // 

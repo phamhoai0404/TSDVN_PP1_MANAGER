@@ -32,6 +32,9 @@ namespace GUI_MAIN
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMainMain));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.btnExportData = new System.Windows.Forms.Button();
+            this.btnManagerAddress = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -72,6 +75,7 @@ namespace GUI_MAIN
             this.txtAddress = new System.Windows.Forms.TextBox();
             this.tmrProgram = new System.Windows.Forms.Timer(this.components);
             this.panel1.SuspendLayout();
+            this.panel6.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -90,6 +94,7 @@ namespace GUI_MAIN
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.panel1.Controls.Add(this.panel6);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.panel2);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
@@ -98,6 +103,44 @@ namespace GUI_MAIN
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(963, 120);
             this.panel1.TabIndex = 4;
+            // 
+            // panel6
+            // 
+            this.panel6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel6.Controls.Add(this.btnExportData);
+            this.panel6.Controls.Add(this.btnManagerAddress);
+            this.panel6.Location = new System.Drawing.Point(810, 4);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(99, 108);
+            this.panel6.TabIndex = 10;
+            // 
+            // btnExportData
+            // 
+            this.btnExportData.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnExportData.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnExportData.BackgroundImage")));
+            this.btnExportData.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnExportData.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnExportData.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnExportData.Location = new System.Drawing.Point(0, 55);
+            this.btnExportData.Name = "btnExportData";
+            this.btnExportData.Size = new System.Drawing.Size(99, 53);
+            this.btnExportData.TabIndex = 1;
+            this.btnExportData.UseVisualStyleBackColor = false;
+            this.btnExportData.Click += new System.EventHandler(this.btnExportData_Click);
+            // 
+            // btnManagerAddress
+            // 
+            this.btnManagerAddress.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnManagerAddress.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnManagerAddress.BackgroundImage")));
+            this.btnManagerAddress.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnManagerAddress.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnManagerAddress.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnManagerAddress.Location = new System.Drawing.Point(0, 0);
+            this.btnManagerAddress.Name = "btnManagerAddress";
+            this.btnManagerAddress.Size = new System.Drawing.Size(99, 55);
+            this.btnManagerAddress.TabIndex = 0;
+            this.btnManagerAddress.UseVisualStyleBackColor = false;
+            this.btnManagerAddress.Click += new System.EventHandler(this.btnManagerAddress_Click);
             // 
             // label3
             // 
@@ -531,6 +574,7 @@ namespace GUI_MAIN
             this.Load += new System.EventHandler(this.frmMainMain_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.panel6.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -596,6 +640,9 @@ namespace GUI_MAIN
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.Timer tmrProgram;
+        private System.Windows.Forms.Panel panel6;
+        private System.Windows.Forms.Button btnManagerAddress;
+        private System.Windows.Forms.Button btnExportData;
     }
 }
 

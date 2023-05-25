@@ -24,4 +24,11 @@ namespace GUI_MAIN.DTO
             this.historyNote = this.historyNote?.Trim();
         }
     }
+    public class Export
+    {
+        public int addressID { get; set; }
+        public DateTime? dateFrom { get; set; }
+        public DateTime? dateTo { get; set; }
+        public bool exportDate { get; set; }
+    }
 }

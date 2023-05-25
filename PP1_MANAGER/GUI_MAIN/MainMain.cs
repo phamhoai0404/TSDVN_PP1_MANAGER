@@ -223,5 +223,26 @@ namespace GUI_MAIN
         {
 
         }
+
+        private void btnManagerAddress_Click(object sender, EventArgs e)
+        {
+            this.actionButton(false);
+            this.updateLable("Quản lý Vị trí kệ");
+            frmFormAddress frmAddress = new frmFormAddress();
+            frmAddress.ShowDialog();
+            this.actionButton(true);
+            this.txtAddress.Focus();
+            
+        }
+
+        private void btnExportData_Click(object sender, EventArgs e)
+        {
+            this.actionButton(false);
+            this.updateLable("Xuất dữ liệu");
+            frmFormExport frmFormExport = new frmFormExport();
+            frmFormExport.ShowDialog();
+            this.actionButton(true);
+            this.txtAddress.Focus();
+        }
     }
 }

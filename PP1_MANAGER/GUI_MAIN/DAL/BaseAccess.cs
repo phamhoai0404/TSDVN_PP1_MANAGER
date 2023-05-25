@@ -43,6 +43,7 @@ namespace GUI_MAIN.DAL
             }
             catch (Exception ex)
             {
+                CloseConnection();
                 return string.Format(RESULT.ERROR_015_CATCH, "GetListDataTable", ex.Message);
             }
         }

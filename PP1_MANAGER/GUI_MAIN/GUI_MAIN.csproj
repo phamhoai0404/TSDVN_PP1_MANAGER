@@ -37,6 +37,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Management" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -49,19 +50,33 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BLL\ActionChild.cs" />
+    <Compile Include="BLL\ActionExport.cs" />
     <Compile Include="BLL\ActionMain.cs" />
     <Compile Include="BLL\Function.cs" />
+    <Compile Include="BLL\ManagerAddress.cs" />
     <Compile Include="DAL\AddressAccess.cs" />
     <Compile Include="DAL\BaseAccess.cs" />
     <Compile Include="DAL\HistoryAccess.cs" />
     <Compile Include="DTO\Address.cs" />
     <Compile Include="DTO\Enum.cs" />
     <Compile Include="DTO\History.cs" />
+    <Compile Include="FormAddress.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormAddress.Designer.cs">
+      <DependentUpon>FormAddress.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormChild.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FormChild.Designer.cs">
       <DependentUpon>FormChild.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormExport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormExport.Designer.cs">
+      <DependentUpon>FormExport.cs</DependentUpon>
     </Compile>
     <Compile Include="MainMain.cs">
       <SubType>Form</SubType>
@@ -71,8 +86,14 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FormAddress.resx">
+      <DependentUpon>FormAddress.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormChild.resx">
       <DependentUpon>FormChild.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormExport.resx">
+      <DependentUpon>FormExport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainMain.resx">
       <DependentUpon>MainMain.cs</DependentUpon>

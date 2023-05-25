@@ -21,12 +21,8 @@ namespace GUI_MAIN.DAL
                                         "WHERE historyAddress = {0} and DateValue(historyDate) = #{1}# " +
                                         "ORDER BY historyDate DESC", add.addressID, dateNow);
 
-            string reusltTemp = GetListDataTable(sql, ref listAfter);
-            if (reusltTemp != RESULT.OK)
-            {
-                return reusltTemp;
-            }
-            return RESULT.OK;
+           return GetListDataTable(sql, ref listAfter);
+            
         }
         public static string GetData(ref string totalRow, ref DataTable dataTable)
         {
@@ -67,6 +63,36 @@ namespace GUI_MAIN.DAL
                                                  history.historyAddressID, history.historyStatus, history.historyResistor, history.historyVoltage, history.historyNote);
 
             return ExecuteNonQuery(sqlHistory);
+        }
+        public static string SearchData(Export input, ref DataTable listDataTable)
+        {
+
+            List<string> listSearch = new List<string>();
+            if (input.addressID != -1)
+            {
+                listSearch.Add(string.Format("(historyAddress = {0})", input.addressID));
+            }
+            if (input.exportDate == true)
+            {
+                string tempStart = input.dateFrom?.ToString("yyyy-MM-dd");
+                string tempEnd = input.dateTo?.ToString("yyyy-MM-dd") + " 23:59:59";
+                listSearch.Add(string.Format("(historyDate BETWEEN #{0}# AND #{1}#)", tempStart, tempEnd));
+            }
+            string stringWhere = " ";
+            if(listSearch.Count() > 0)
+            {
+                stringWhere = "Where " + string.Join(" and ", listSearch);
+            }
+
+            string sqlSearch = string.Format("Select TOP 300  historyDate, addressName, historyStatus, historyResistor, historyVoltage, historyNote " +
+                                           "From History " +
+                                           "LEFT JOIN Address ON Address.addressID = History.historyAddress " +
+                                           "{0}" +
+                                           "ORDER BY historyDate DESC", stringWhere);
+
+
+
+            return GetListDataTable(sqlSearch, ref listDataTable);
         }
     }
 }

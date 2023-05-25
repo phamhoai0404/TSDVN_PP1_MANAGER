@@ -19,6 +19,13 @@ namespace GUI_MAIN.DTO
 
         public const string ERROR_VALIDATE_ADDRESS = "Có lỗi phát sinh - địa chỉ ID của Address đang bị lỗi => Bạn có thể tắt chương trình đi mở lại!";
         public const string ERROR_VALIDATE_NOTNULL = "Không được để trống hiệu điện thế và điện trở";
+
+        public const string ERROR_VALIDATE_FORMADDRESS = "Không được để trống địa chỉ khi thêm!";
+        public const string ERROR_FORMADDRESS_CHECKEXIST = "Đã tồn tại địa chỉ: {0} => Trong CSDL!";
+
+        public const string ERROR_FORMEXPORT_DATE = "Ngày Từ <= Ngày đến!";
+        public const string ERROR_FORMEXPORT_NOTDATA = "Không có dữ liệu thỏa mãn để export!";
+
     }
     public class MdlCommon
     {
