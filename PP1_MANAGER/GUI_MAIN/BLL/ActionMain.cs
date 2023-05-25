@@ -6,6 +6,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace GUI_MAIN.BLL
 {
@@ -74,6 +75,35 @@ namespace GUI_MAIN.BLL
         public static string AddHistory(History historyMain)
         {
             return HistoryAccess.AddHistory(historyMain);
+        }
+
+        public static string GetData(ref string totalSum, ref DataGridView dgv)
+        {
+            DataTable dataTemp = new DataTable();
+
+            string resultValue = HistoryAccess.GetData(ref totalSum, ref dataTemp);
+            if(resultValue != RESULT.OK)
+            {
+                return resultValue;
+            }
+            
+            dgv.Rows.Clear();
+            
+            foreach (DataRow row in dataTemp.Rows)
+            {
+                dgv.Rows.Add(row.ItemArray);
+                //dgv.Rows.Add(
+                //    row["historyDate"].ToString(), 
+                //    row["addressName"].ToString(), 
+                //    row["historyStatus"].ToString(),
+                //    row["historyResistor"].ToString(),
+                //    row["historyVoltage"].ToString(),
+                //    row["historyNote"].ToString()
+                //    );
+            }
+            return RESULT.OK;
+
+
         }
     }
 }

@@ -10,5 +10,11 @@ namespace GUI_MAIN.DTO
     {
         public long addressID { get; set; }
         public string addressName { get; set; }
+
+        public void SetValue(Address temp)
+        {
+            this.addressID = temp.addressID;
+            this.addressName = temp.addressName;
+        }
     }
 }

@@ -29,6 +29,7 @@ namespace GUI_MAIN
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMainMain));
             this.panel1 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
@@ -51,6 +52,7 @@ namespace GUI_MAIN
             this.panel4 = new System.Windows.Forms.Panel();
             this.lblSum = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.btnSearch = new System.Windows.Forms.Button();
             this.grpAdd = new System.Windows.Forms.GroupBox();
             this.panel5 = new System.Windows.Forms.Panel();
             this.btnAdd = new System.Windows.Forms.Button();
@@ -68,7 +70,7 @@ namespace GUI_MAIN
             this.label4 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.txtAddress = new System.Windows.Forms.TextBox();
-            this.btnSearch = new System.Windows.Forms.Button();
+            this.tmrProgram = new System.Windows.Forms.Timer(this.components);
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -153,6 +155,7 @@ namespace GUI_MAIN
             this.groupBox2.Size = new System.Drawing.Size(963, 40);
             this.groupBox2.TabIndex = 6;
             this.groupBox2.TabStop = false;
+            this.groupBox2.Enter += new System.EventHandler(this.groupBox2_Enter);
             // 
             // lblDisplay
             // 
@@ -300,6 +303,20 @@ namespace GUI_MAIN
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(957, 316);
             this.panel3.TabIndex = 0;
+            // 
+            // btnSearch
+            // 
+            this.btnSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSearch.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.btnSearch.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnSearch.BackgroundImage")));
+            this.btnSearch.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnSearch.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnSearch.Location = new System.Drawing.Point(659, 30);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(63, 40);
+            this.btnSearch.TabIndex = 3;
+            this.btnSearch.UseVisualStyleBackColor = false;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // grpAdd
             // 
@@ -491,19 +508,10 @@ namespace GUI_MAIN
             this.txtAddress.TabIndex = 0;
             this.txtAddress.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtAddress_KeyDown);
             // 
-            // btnSearch
+            // tmrProgram
             // 
-            this.btnSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSearch.BackColor = System.Drawing.SystemColors.HotTrack;
-            this.btnSearch.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnSearch.BackgroundImage")));
-            this.btnSearch.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnSearch.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnSearch.Location = new System.Drawing.Point(659, 30);
-            this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(63, 40);
-            this.btnSearch.TabIndex = 3;
-            this.btnSearch.UseVisualStyleBackColor = false;
-            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
+            this.tmrProgram.Interval = 1;
+            this.tmrProgram.Tick += new System.EventHandler(this.tmrProgram_Tick);
             // 
             // frmMainMain
             // 
@@ -587,6 +595,7 @@ namespace GUI_MAIN
         private System.Windows.Forms.Button btnClear;
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Button btnSearch;
+        private System.Windows.Forms.Timer tmrProgram;
     }
 }
 

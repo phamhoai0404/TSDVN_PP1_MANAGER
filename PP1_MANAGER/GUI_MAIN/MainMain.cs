@@ -117,14 +117,14 @@ namespace GUI_MAIN
             }
             finally
             {
-                this.actionButton(true);
                 if (this.grpAdd.Enabled)
                 {
+                    this.actionButton(true);
                     this.txtResistor.Focus();
                 }
                 else
                 {
-                    this.txtAddress.Focus();
+                    this.tmrProgram.Start();
                 }
             }
         }
@@ -132,8 +132,12 @@ namespace GUI_MAIN
 
         private void frmMainMain_Load(object sender, EventArgs e)
         {
+            this.actionButton(false);
+            this.updateLable("Load dữ liệu");
             this.grpAdd.Enabled = false;
+            this.tmrProgram.Start();
         }
+        
 
         private void txtAddress_KeyDown(object sender, KeyEventArgs e)
         {
@@ -159,7 +163,13 @@ namespace GUI_MAIN
                 string resultValue = ActionMain.CheckAddress(ref this.addressMain, ref listAfter);
                 if (resultValue == RESULT.ERROR_HAS_DATA)
                 {
-                    MessageBox.Show("vÀO NHEIUÈ");
+                    this.updateLable("Trường hợp đã có dữ liệu");
+                    frmFormChild formChild = new frmFormChild(this.addressMain, this.listAfter);
+                    formChild.ShowDialog();
+                    if(formChild.actionAddData == true)
+                    {
+                        this.tmrProgram.Start();
+                    }
                     return;
                 }
 
@@ -189,6 +199,29 @@ namespace GUI_MAIN
         private void btnSearch_Click(object sender, EventArgs e)
         {
             this.CheckAddress();
+        }
+
+        private void tmrProgram_Tick(object sender, EventArgs e)
+        {
+            this.tmrProgram.Stop();
+
+            string totalSum = "";
+            string resultValue = ActionMain.GetData(ref totalSum, ref this.dgvData);
+            if(resultValue != RESULT.OK)
+            {
+                MessageBox.Show(resultValue, "Error Get Data", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            this.lblSum.Text = "Số bản ghi: " + totalSum;
+            this.actionButton(true);
+            this.txtAddress.Focus();
+            
+        }
+
+        private void groupBox2_Enter(object sender, EventArgs e)
+        {
+
         }
     }
 }
