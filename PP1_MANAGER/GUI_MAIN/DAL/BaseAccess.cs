@@ -46,6 +46,33 @@ namespace GUI_MAIN.DAL
                 return string.Format(RESULT.ERROR_015_CATCH, "GetListDataTable", ex.Message);
             }
         }
+        protected static string ExecuteNonQuery(string sql)
+        {
+            OleDbCommand cmdSQL = new OleDbCommand();
+            try
+            {
+                OpenConnection();
+                cmdSQL.Connection = conn;
+
+                cmdSQL.Transaction = conn.BeginTransaction();
+                cmdSQL.CommandText = sql;
+                cmdSQL.ExecuteNonQuery();
+
+                cmdSQL.Transaction.Commit();
+
+                CloseConnection();
+                cmdSQL.Dispose();
+                cmdSQL = null;
+
+                return RESULT.OK;
+            }
+            catch (Exception ex)
+            {
+                cmdSQL.Transaction.Rollback();
+                CloseConnection();
+                return string.Format(RESULT.ERROR_015_CATCH, "ExecuteNonQuery", ex.Message); ;
+            }
+        }
 
     }
 }

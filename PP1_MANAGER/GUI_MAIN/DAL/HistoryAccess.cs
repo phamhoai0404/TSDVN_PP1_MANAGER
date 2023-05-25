@@ -25,5 +25,14 @@ namespace GUI_MAIN.DAL
             }
             return RESULT.OK;
         }
+
+        public static string AddHistory(History history)
+        {
+            string sqlHistory = string.Format(@"INSERT INTO History(historyAddress, historyStatus, historyResistor ,historyVoltage, historyNote,  historyDate) 
+                                                VALUES({0}, {1}, '{2}', '{3}', '{4}', NOW())",
+                                                 history.historyAddressID, history.historyStatus, history.historyResistor, history.historyVoltage, history.historyNote);
+
+            return ExecuteNonQuery(sqlHistory);
+        }
     }
 }

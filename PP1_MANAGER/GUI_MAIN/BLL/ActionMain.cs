@@ -11,7 +11,7 @@ namespace GUI_MAIN.BLL
 {
     public class ActionMain
     {
-        public static string AddItem(ref Address address, ref DataTable listAfter)
+        public static string CheckAddress(ref Address address, ref DataTable listAfter)
         {
             //Kiem tra xem co nhap du lieu khong
             if (string.IsNullOrWhiteSpace(address.addressName))
@@ -41,6 +41,39 @@ namespace GUI_MAIN.BLL
 
             //Neu ma co du lieu thi tra ve co loi
             return RESULT.ERROR_HAS_DATA;
+        }
+
+        /// <summary>
+        /// Thuc hien check du lieu nhap vao cua nguoi dung
+        /// </summary>
+        /// <param name="historyMain"></param>
+        /// <returns>
+        /// OK: Tra ve du lieu
+        /// !OK: Bi loi
+        /// </returns>
+        public static string CheckValueInput(ref History historyMain)
+        {
+            //Check dia chi ID cua ke xem co loi hay khong truong hop nay gap phai khi khong kip phan hoi chuong trinh
+            if(historyMain.historyAddressID == MdlCommon.NOT_ADDRESS)
+            {
+                return RESULT.ERROR_VALIDATE_ADDRESS;
+            }
+
+            //check khong duoc de trong hieu dien the va dien tro
+            if(string.IsNullOrWhiteSpace(historyMain.historyResistor) ||
+                string.IsNullOrWhiteSpace(historyMain.historyVoltage))
+            {
+                return RESULT.ERROR_VALIDATE_NOTNULL;
+            }
+
+            historyMain.TrimObject();//Loai bo nhung ki tu thua
+
+            return RESULT.OK;
+        }
+
+        public static string AddHistory(History historyMain)
+        {
+            return HistoryAccess.AddHistory(historyMain);
         }
     }
 }

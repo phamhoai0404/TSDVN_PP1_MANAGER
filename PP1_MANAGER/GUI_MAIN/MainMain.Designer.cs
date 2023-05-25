@@ -39,7 +39,7 @@ namespace GUI_MAIN
             this.lblDisplay = new System.Windows.Forms.Label();
             this.picExecute = new System.Windows.Forms.PictureBox();
             this.picDone = new System.Windows.Forms.PictureBox();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.grpMainMain = new System.Windows.Forms.GroupBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.dgvData = new System.Windows.Forms.DataGridView();
             this.cOLUMN1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -54,6 +54,7 @@ namespace GUI_MAIN
             this.grpAdd = new System.Windows.Forms.GroupBox();
             this.panel5 = new System.Windows.Forms.Panel();
             this.btnAdd = new System.Windows.Forms.Button();
+            this.btnClear = new System.Windows.Forms.Button();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.rdoNG = new System.Windows.Forms.RadioButton();
             this.rdoOK = new System.Windows.Forms.RadioButton();
@@ -67,13 +68,14 @@ namespace GUI_MAIN
             this.label4 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.txtAddress = new System.Windows.Forms.TextBox();
+            this.btnSearch = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picExecute)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picDone)).BeginInit();
-            this.groupBox1.SuspendLayout();
+            this.grpMainMain.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvData)).BeginInit();
             this.panel4.SuspendLayout();
@@ -182,17 +184,17 @@ namespace GUI_MAIN
             this.picDone.TabIndex = 17;
             this.picDone.TabStop = false;
             // 
-            // groupBox1
+            // grpMainMain
             // 
-            this.groupBox1.Controls.Add(this.groupBox3);
-            this.groupBox1.Controls.Add(this.panel3);
-            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox1.Location = new System.Drawing.Point(0, 120);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(963, 630);
-            this.groupBox1.TabIndex = 7;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "+++";
+            this.grpMainMain.Controls.Add(this.groupBox3);
+            this.grpMainMain.Controls.Add(this.panel3);
+            this.grpMainMain.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.grpMainMain.Location = new System.Drawing.Point(0, 120);
+            this.grpMainMain.Name = "grpMainMain";
+            this.grpMainMain.Size = new System.Drawing.Size(963, 630);
+            this.grpMainMain.TabIndex = 7;
+            this.grpMainMain.TabStop = false;
+            this.grpMainMain.Text = "+++";
             // 
             // groupBox3
             // 
@@ -289,6 +291,7 @@ namespace GUI_MAIN
             // 
             // panel3
             // 
+            this.panel3.Controls.Add(this.btnSearch);
             this.panel3.Controls.Add(this.grpAdd);
             this.panel3.Controls.Add(this.label1);
             this.panel3.Controls.Add(this.txtAddress);
@@ -321,23 +324,37 @@ namespace GUI_MAIN
             // panel5
             // 
             this.panel5.Controls.Add(this.btnAdd);
+            this.panel5.Controls.Add(this.btnClear);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel5.Location = new System.Drawing.Point(3, 142);
+            this.panel5.Location = new System.Drawing.Point(3, 163);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(951, 82);
+            this.panel5.Size = new System.Drawing.Size(951, 61);
             this.panel5.TabIndex = 3;
             // 
             // btnAdd
             // 
             this.btnAdd.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnAdd.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.btnAdd.Location = new System.Drawing.Point(0, 24);
+            this.btnAdd.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnAdd.Location = new System.Drawing.Point(66, 0);
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(951, 58);
+            this.btnAdd.Size = new System.Drawing.Size(885, 61);
             this.btnAdd.TabIndex = 0;
             this.btnAdd.Text = "THÊM";
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            // 
+            // btnClear
+            // 
+            this.btnClear.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnClear.BackgroundImage")));
+            this.btnClear.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnClear.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnClear.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnClear.Location = new System.Drawing.Point(0, 0);
+            this.btnClear.Name = "btnClear";
+            this.btnClear.Size = new System.Drawing.Size(66, 61);
+            this.btnClear.TabIndex = 0;
+            this.btnClear.UseVisualStyleBackColor = true;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
             // groupBox5
             // 
@@ -358,13 +375,13 @@ namespace GUI_MAIN
             this.rdoNG.Name = "rdoNG";
             this.rdoNG.Size = new System.Drawing.Size(49, 22);
             this.rdoNG.TabIndex = 0;
-            this.rdoNG.TabStop = true;
             this.rdoNG.Text = "NG";
             this.rdoNG.UseVisualStyleBackColor = true;
             // 
             // rdoOK
             // 
             this.rdoOK.AutoSize = true;
+            this.rdoOK.Checked = true;
             this.rdoOK.Location = new System.Drawing.Point(29, 38);
             this.rdoOK.Name = "rdoOK";
             this.rdoOK.Size = new System.Drawing.Size(48, 22);
@@ -474,13 +491,27 @@ namespace GUI_MAIN
             this.txtAddress.TabIndex = 0;
             this.txtAddress.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtAddress_KeyDown);
             // 
+            // btnSearch
+            // 
+            this.btnSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSearch.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.btnSearch.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnSearch.BackgroundImage")));
+            this.btnSearch.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnSearch.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnSearch.Location = new System.Drawing.Point(659, 30);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(63, 40);
+            this.btnSearch.TabIndex = 3;
+            this.btnSearch.UseVisualStyleBackColor = false;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
+            // 
             // frmMainMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(963, 790);
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.grpMainMain);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -499,7 +530,7 @@ namespace GUI_MAIN
             this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picExecute)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picDone)).EndInit();
-            this.groupBox1.ResumeLayout(false);
+            this.grpMainMain.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvData)).EndInit();
             this.panel4.ResumeLayout(false);
@@ -526,7 +557,7 @@ namespace GUI_MAIN
         private System.Windows.Forms.Label lblDisplay;
         private System.Windows.Forms.PictureBox picExecute;
         private System.Windows.Forms.PictureBox picDone;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox grpMainMain;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Label lblSum;
@@ -538,7 +569,6 @@ namespace GUI_MAIN
         private System.Windows.Forms.Label lblAddress;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Panel panel5;
-        private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.RadioButton rdoNG;
         private System.Windows.Forms.RadioButton rdoOK;
@@ -554,6 +584,9 @@ namespace GUI_MAIN
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
+        private System.Windows.Forms.Button btnClear;
+        private System.Windows.Forms.Button btnAdd;
+        private System.Windows.Forms.Button btnSearch;
     }
 }
 

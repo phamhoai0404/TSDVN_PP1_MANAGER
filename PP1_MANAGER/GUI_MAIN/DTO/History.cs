@@ -12,10 +12,16 @@ namespace GUI_MAIN.DTO
         public long historyAddressID { get; set; }
         public string historyAddressString { get; set; }
         public DateTime historyDate { get; set; }
-        public int historyStatus { get; set; }
+        public bool historyStatus { get; set; }
         public string historyResistor { get; set; }
         public string historyVoltage { get; set; }
         public string historyNote { get; set; }
         
+        public void TrimObject()
+        {
+            this.historyResistor = this.historyResistor?.Trim();
+            this.historyVoltage = this.historyVoltage?.Trim();
+            this.historyNote = this.historyNote?.Trim();
+        }
     }
 }
