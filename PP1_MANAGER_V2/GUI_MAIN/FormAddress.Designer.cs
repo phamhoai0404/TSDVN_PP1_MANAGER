@@ -33,6 +33,8 @@ namespace GUI_MAIN
             this.panel1 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
             this.grpAdd = new System.Windows.Forms.GroupBox();
+            this.cmbAddress = new System.Windows.Forms.ComboBox();
+            this.label9 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnClose = new System.Windows.Forms.Button();
@@ -77,6 +79,8 @@ namespace GUI_MAIN
             // 
             // grpAdd
             // 
+            this.grpAdd.Controls.Add(this.cmbAddress);
+            this.grpAdd.Controls.Add(this.label9);
             this.grpAdd.Controls.Add(this.label1);
             this.grpAdd.Controls.Add(this.groupBox1);
             this.grpAdd.Controls.Add(this.txtAddress);
@@ -87,12 +91,35 @@ namespace GUI_MAIN
             this.grpAdd.TabIndex = 7;
             this.grpAdd.TabStop = false;
             // 
+            // cmbAddress
+            // 
+            this.cmbAddress.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbAddress.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbAddress.FormattingEnabled = true;
+            this.cmbAddress.Location = new System.Drawing.Point(108, 39);
+            this.cmbAddress.Name = "cmbAddress";
+            this.cmbAddress.Size = new System.Drawing.Size(372, 37);
+            this.cmbAddress.TabIndex = 17;
+            // 
+            // label9
+            // 
+            this.label9.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(105, 21);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(56, 15);
+            this.label9.TabIndex = 16;
+            this.label9.Text = "Bộ phận:";
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(105, 47);
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(105, 79);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(60, 18);
+            this.label1.Size = new System.Drawing.Size(49, 15);
             this.label1.TabIndex = 3;
             this.label1.Text = "Vị trí kệ:";
             // 
@@ -101,7 +128,7 @@ namespace GUI_MAIN
             this.groupBox1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.groupBox1.Controls.Add(this.btnClose);
             this.groupBox1.Controls.Add(this.btnAddAddress);
-            this.groupBox1.Location = new System.Drawing.Point(108, 124);
+            this.groupBox1.Location = new System.Drawing.Point(108, 156);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(372, 87);
             this.groupBox1.TabIndex = 2;
@@ -132,7 +159,7 @@ namespace GUI_MAIN
             // 
             this.txtAddress.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txtAddress.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtAddress.Location = new System.Drawing.Point(108, 68);
+            this.txtAddress.Location = new System.Drawing.Point(108, 100);
             this.txtAddress.Name = "txtAddress";
             this.txtAddress.Size = new System.Drawing.Size(372, 40);
             this.txtAddress.TabIndex = 1;
@@ -243,5 +270,7 @@ namespace GUI_MAIN
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.Button btnAddAddress;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ComboBox cmbAddress;
+        private System.Windows.Forms.Label label9;
     }
 }

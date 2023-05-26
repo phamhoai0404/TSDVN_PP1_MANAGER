@@ -135,9 +135,29 @@ namespace GUI_MAIN
             this.actionButton(false);
             this.updateLable("Load dữ liệu");
             this.grpAdd.Enabled = false;
+            this.tmrSartLoad.Start();
+        }
+        private void tmrSartLoad_Tick(object sender, EventArgs e)
+        {
+            this.tmrSartLoad.Stop();
+            this.updateLable("Load dữ liệu bộ phận");
+
+            DataTable listDepartment = new DataTable();
+            string resultValue = ActionMain.GetDepartment(ref listDepartment);
+            if (resultValue != RESULT.OK)
+            {
+                MessageBox.Show(resultValue, "Error Get Department", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            this.cmbAddress.DataSource = listDepartment;
+            this.cmbAddress.DisplayMember = "departmentName"; // Hiển thị dữ liệu từ cột "Name"
+            this.cmbAddress.ValueMember = "departmentID"; // Lấy giá trị từ cột "ID"
+            this.cmbAddress.SelectedIndex = -1;
+            this.addressMain.addressDepartment = -1;
+            this.addressMain.departmentName = "";
+
             this.tmrProgram.Start();
         }
-        
 
         private void txtAddress_KeyDown(object sender, KeyEventArgs e)
         {
@@ -160,20 +180,21 @@ namespace GUI_MAIN
                 this.addressMain.addressName = this.txtAddress.Text;
                 this.addressMain.addressID = MdlCommon.NOT_ADDRESS;
 
+                this.updateLable("Check sự tồn vị trí trong lịch sử");
                 string resultValue = ActionMain.CheckAddress(ref this.addressMain, ref listAfter);
                 if (resultValue == RESULT.ERROR_HAS_DATA)
                 {
                     this.updateLable("Trường hợp đã có dữ liệu");
                     frmFormChild formChild = new frmFormChild(this.addressMain, this.listAfter);
                     formChild.ShowDialog();
-                    if(formChild.actionAddData == true)
+                    if (formChild.actionAddData == true)
                     {
                         this.tmrProgram.Start();
                     }
                     return;
                 }
 
-                this.updateLable("Check sự tồn vị trí trong lịch sử");
+                
                 if (resultValue != RESULT.OK)
                 {
                     MessageBox.Show(resultValue, "Error Input Address", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -205,9 +226,10 @@ namespace GUI_MAIN
         {
             this.tmrProgram.Stop();
 
+            this.updateLable("Load dữ liệu toàn bộ...");
             string totalSum = "";
             string resultValue = ActionMain.GetData(ref totalSum, ref this.dgvData);
-            if(resultValue != RESULT.OK)
+            if (resultValue != RESULT.OK)
             {
                 MessageBox.Show(resultValue, "Error Get Data", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -216,7 +238,7 @@ namespace GUI_MAIN
             this.lblSum.Text = "Số bản ghi: " + totalSum;
             this.actionButton(true);
             this.txtAddress.Focus();
-            
+
         }
 
         private void groupBox2_Enter(object sender, EventArgs e)
@@ -228,11 +250,11 @@ namespace GUI_MAIN
         {
             this.actionButton(false);
             this.updateLable("Quản lý Vị trí kệ");
-            frmFormAddress frmAddress = new frmFormAddress();
+            frmFormAddress frmAddress = new frmFormAddress(this.cmbAddress);
             frmAddress.ShowDialog();
             this.actionButton(true);
             this.txtAddress.Focus();
-            
+
         }
 
         private void btnExportData_Click(object sender, EventArgs e)
@@ -245,20 +267,16 @@ namespace GUI_MAIN
             this.txtAddress.Focus();
         }
 
-        private void txtResistor_KeyDown(object sender, KeyEventArgs e)
+        private void cmbAddress_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(e.KeyCode == Keys.Enter)
+            try
             {
-                this.txtVoltage.Focus();
-                return;
+                
+                this.addressMain.addressDepartment = Convert.ToInt32(this.cmbAddress.SelectedValue);
+                this.addressMain.departmentName = this.cmbAddress.Text;
             }
-        }
-
-        private void txtNote_KeyDown(object sender, KeyEventArgs e)
-        {
-            if(e.KeyCode == Keys.Enter)
+            catch 
             {
-                this.btnAdd.PerformClick();
             }
         }
     }

@@ -24,8 +24,9 @@ namespace GUI_MAIN
 
         public frmFormChild(Address address, DataTable listAfter)
         {
-            this.historyMain.historyAddressID = address.addressID;
             InitializeComponent();
+            this.historyMain.historyAddressID = address.addressID;
+            this.lblDepartment.Text = address.departmentName;
 
             //Thuc hien lay du lieu
             this.dgvData.Rows.Clear();
@@ -79,5 +80,7 @@ namespace GUI_MAIN
             this.historyMain.historyNote = this.txtNote.Text;//Lay ghi chu
             this.historyMain.historyStatus = this.rdoOK.Checked;//Thuc hien lay  trang thai
         }
+
+      
     }
 }

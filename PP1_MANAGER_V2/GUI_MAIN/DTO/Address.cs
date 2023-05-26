@@ -10,6 +10,8 @@ namespace GUI_MAIN.DTO
     {
         public long addressID { get; set; }
         public string addressName { get; set; }
+        public int addressDepartment { get; set; }
+        public string departmentName { get; set; }
 
         public void SetValue(Address temp)
         {

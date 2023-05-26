@@ -13,7 +13,7 @@ namespace GUI_MAIN.DAL
     {
         public static string CheckExistAddress(ref Address add)
         {
-            string sql = string.Format("Select * from Address where addressName = '{0}'", add.addressName);
+            string sql = string.Format("Select * from Address where addressDepartment = {1} and addressName = '{0}' ", add.addressName, add.addressDepartment);
             DataTable tempData = new DataTable();
             string reusltTemp = GetListDataTable(sql, ref tempData);
             if (reusltTemp != RESULT.OK)
@@ -28,9 +28,10 @@ namespace GUI_MAIN.DAL
             }
             if (tempData.Rows.Count == 0)
             {
-                return string.Format(RESULT.ERROR_NOT_ADDRESS, add.addressName);
+                return string.Format(RESULT.ERROR_NOT_ADDRESS, add.addressName, add.departmentName);
             }
-            return string.Format(RESULT.ERROR_MULTI_ADDRESS, add.addressName);
+            return string.Format(RESULT.ERROR_MULTI_ADDRESS, add.addressName, tempData.Rows.Count, add.departmentName);
+
         }
         public static string GetData(ref DataTable tempData)
         {

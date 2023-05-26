@@ -13,9 +13,10 @@ namespace GUI_MAIN.DTO
 
         public const string ERROR_015_CATCH = "Lỗi {0} Catch - {1}";
 
-        public const string ERROR_NOT_ADDRESS = "Vị trí: {0} => Không tồn tại bạn cần kiểm tra lại";
+        public const string ERROR_NOT_ADDRESS = "Trong bộ phận: {1} - Vị trí: {0} => Không tồn tại bạn cần kiểm tra lại";
         public const string ERROR_NOT_NULL_INPUT = "{0} => Không được để trống dữ liệu!";
-        public const string ERROR_MULTI_ADDRESS = "Vị trí: {0} => Chứa: {0} - bản ghi trong Address  => Bạn cần kiểm tra lại";
+        public const string ERROR_MUST_SELECT_DEPARTMENT = "Cần phải lựa chọn bộ phận!";
+        public const string ERROR_MULTI_ADDRESS = "Trong bộ phận: {2} - Vị trí: {0} => Chứa: {1} - bản ghi trong Address  => Bạn cần kiểm tra lại";
 
         public const string ERROR_VALIDATE_ADDRESS = "Có lỗi phát sinh - địa chỉ ID của Address đang bị lỗi => Bạn có thể tắt chương trình đi mở lại!";
         public const string ERROR_VALIDATE_NOTNULL = "Không được để trống hiệu điện thế và điện trở";

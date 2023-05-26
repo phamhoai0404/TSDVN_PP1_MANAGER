@@ -11,3 +11,15 @@ D:\hoai\Hoai_Daotao\vs\PP\PP1_MANAGER\PP1_MANAGER\GUI_MAIN\obj\Debug\GUI_MAIN.pd
 D:\hoai\Hoai_Daotao\vs\PP\PP1_MANAGER\PP1_MANAGER\GUI_MAIN\obj\Debug\GUI_MAIN.frmFormAddress.resources
 D:\hoai\Hoai_Daotao\vs\PP\PP1_MANAGER\PP1_MANAGER\GUI_MAIN\obj\Debug\GUI_MAIN.frmFormExport.resources
 D:\hoai\Hoai_Daotao\vs\PP\PP1_MANAGER\PP1_MANAGER\GUI_MAIN\obj\Debug\GUI_MAIN.csprojAssemblyReference.cache
+D:\hoai\Hoai_Daotao\vs\PP\PP1_MANAGER\PP1_MANAGER_V2\GUI_MAIN\bin\Debug\GUI_MAIN.exe.config
+D:\hoai\Hoai_Daotao\vs\PP\PP1_MANAGER\PP1_MANAGER_V2\GUI_MAIN\bin\Debug\GUI_MAIN.exe
+D:\hoai\Hoai_Daotao\vs\PP\PP1_MANAGER\PP1_MANAGER_V2\GUI_MAIN\bin\Debug\GUI_MAIN.pdb
+D:\hoai\Hoai_Daotao\vs\PP\PP1_MANAGER\PP1_MANAGER_V2\GUI_MAIN\obj\Debug\GUI_MAIN.frmFormAddress.resources
+D:\hoai\Hoai_Daotao\vs\PP\PP1_MANAGER\PP1_MANAGER_V2\GUI_MAIN\obj\Debug\GUI_MAIN.frmFormChild.resources
+D:\hoai\Hoai_Daotao\vs\PP\PP1_MANAGER\PP1_MANAGER_V2\GUI_MAIN\obj\Debug\GUI_MAIN.frmFormExport.resources
+D:\hoai\Hoai_Daotao\vs\PP\PP1_MANAGER\PP1_MANAGER_V2\GUI_MAIN\obj\Debug\GUI_MAIN.frmMainMain.resources
+D:\hoai\Hoai_Daotao\vs\PP\PP1_MANAGER\PP1_MANAGER_V2\GUI_MAIN\obj\Debug\GUI_MAIN.Properties.Resources.resources
+D:\hoai\Hoai_Daotao\vs\PP\PP1_MANAGER\PP1_MANAGER_V2\GUI_MAIN\obj\Debug\GUI_MAIN.csproj.GenerateResource.cache
+D:\hoai\Hoai_Daotao\vs\PP\PP1_MANAGER\PP1_MANAGER_V2\GUI_MAIN\obj\Debug\GUI_MAIN.csproj.CoreCompileInputs.cache
+D:\hoai\Hoai_Daotao\vs\PP\PP1_MANAGER\PP1_MANAGER_V2\GUI_MAIN\obj\Debug\GUI_MAIN.exe
+D:\hoai\Hoai_Daotao\vs\PP\PP1_MANAGER\PP1_MANAGER_V2\GUI_MAIN\obj\Debug\GUI_MAIN.pdb

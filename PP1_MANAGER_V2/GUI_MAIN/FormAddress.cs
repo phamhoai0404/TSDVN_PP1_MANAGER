@@ -19,6 +19,17 @@ namespace GUI_MAIN
             InitializeComponent();
         }
 
+
+        public frmFormAddress(ComboBox combobox)
+        {
+            InitializeComponent();
+            this.cmbAddress.DataSource = combobox.DataSource;
+            this.cmbAddress.DisplayMember = "departmentName"; // Hiển thị dữ liệu từ cột "Name"
+            this.cmbAddress.ValueMember = "departmentID"; // Lấy giá trị từ cột "ID"
+            this.cmbAddress.SelectedIndex = -1;
+        }
+
+
         private void frmFormAddress_Load(object sender, EventArgs e)
         {
             this.grpAdd.Enabled = false;
@@ -56,7 +67,7 @@ namespace GUI_MAIN
                     return;
                 }
 
-                MessageBox.Show("Thêm thành công vị trí: " +this.txtAddress.Text + "!", "Successful", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Thêm thành công vị trí: " + this.txtAddress.Text + "!", "Successful", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 ManagerAddress.GetDataAddress(ref this.dgvData);
                 if (resultValue != RESULT.OK)
@@ -79,7 +90,7 @@ namespace GUI_MAIN
 
         private void txtAddress_KeyDown(object sender, KeyEventArgs e)
         {
-            if(e.KeyCode == Keys.Enter)
+            if (e.KeyCode == Keys.Enter)
             {
                 this.btnAddAddress.PerformClick();
             }

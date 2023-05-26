@@ -40,6 +40,7 @@ namespace GUI_MAIN
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.lblDisplay = new System.Windows.Forms.Label();
             this.picExecute = new System.Windows.Forms.PictureBox();
             this.picDone = new System.Windows.Forms.PictureBox();
@@ -55,6 +56,7 @@ namespace GUI_MAIN
             this.panel4 = new System.Windows.Forms.Panel();
             this.lblSum = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.cmbAddress = new System.Windows.Forms.ComboBox();
             this.btnSearch = new System.Windows.Forms.Button();
             this.grpAdd = new System.Windows.Forms.GroupBox();
             this.panel5 = new System.Windows.Forms.Panel();
@@ -71,10 +73,11 @@ namespace GUI_MAIN
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.txtAddress = new System.Windows.Forms.TextBox();
             this.tmrProgram = new System.Windows.Forms.Timer(this.components);
-            this.label5 = new System.Windows.Forms.Label();
+            this.tmrSartLoad = new System.Windows.Forms.Timer(this.components);
             this.panel1.SuspendLayout();
             this.panel6.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -195,12 +198,22 @@ namespace GUI_MAIN
             this.groupBox2.Controls.Add(this.picExecute);
             this.groupBox2.Controls.Add(this.picDone);
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.groupBox2.Location = new System.Drawing.Point(0, 750);
+            this.groupBox2.Location = new System.Drawing.Point(0, 682);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(963, 40);
             this.groupBox2.TabIndex = 6;
             this.groupBox2.TabStop = false;
             this.groupBox2.Enter += new System.EventHandler(this.groupBox2_Enter);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Dock = System.Windows.Forms.DockStyle.Right;
+            this.label5.Location = new System.Drawing.Point(778, 20);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(182, 18);
+            this.label5.TabIndex = 19;
+            this.label5.Text = "Version: 26/05/2023 09h27";
             // 
             // lblDisplay
             // 
@@ -239,7 +252,7 @@ namespace GUI_MAIN
             this.grpMainMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.grpMainMain.Location = new System.Drawing.Point(0, 120);
             this.grpMainMain.Name = "grpMainMain";
-            this.grpMainMain.Size = new System.Drawing.Size(963, 630);
+            this.grpMainMain.Size = new System.Drawing.Size(963, 562);
             this.grpMainMain.TabIndex = 7;
             this.grpMainMain.TabStop = false;
             this.grpMainMain.Text = "+++";
@@ -249,9 +262,9 @@ namespace GUI_MAIN
             this.groupBox3.Controls.Add(this.dgvData);
             this.groupBox3.Controls.Add(this.panel4);
             this.groupBox3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox3.Location = new System.Drawing.Point(3, 336);
+            this.groupBox3.Location = new System.Drawing.Point(3, 325);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(957, 291);
+            this.groupBox3.Size = new System.Drawing.Size(957, 234);
             this.groupBox3.TabIndex = 1;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Dữ liệu";
@@ -272,7 +285,7 @@ namespace GUI_MAIN
             this.dgvData.Location = new System.Drawing.Point(3, 42);
             this.dgvData.Name = "dgvData";
             this.dgvData.ReadOnly = true;
-            this.dgvData.Size = new System.Drawing.Size(951, 246);
+            this.dgvData.Size = new System.Drawing.Size(951, 189);
             this.dgvData.TabIndex = 1;
             // 
             // cOLUMN1
@@ -339,15 +352,28 @@ namespace GUI_MAIN
             // 
             // panel3
             // 
+            this.panel3.Controls.Add(this.cmbAddress);
             this.panel3.Controls.Add(this.btnSearch);
             this.panel3.Controls.Add(this.grpAdd);
+            this.panel3.Controls.Add(this.label9);
             this.panel3.Controls.Add(this.label1);
             this.panel3.Controls.Add(this.txtAddress);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel3.Location = new System.Drawing.Point(3, 20);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(957, 316);
+            this.panel3.Size = new System.Drawing.Size(957, 305);
             this.panel3.TabIndex = 0;
+            // 
+            // cmbAddress
+            // 
+            this.cmbAddress.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbAddress.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbAddress.FormattingEnabled = true;
+            this.cmbAddress.Location = new System.Drawing.Point(128, 40);
+            this.cmbAddress.Name = "cmbAddress";
+            this.cmbAddress.Size = new System.Drawing.Size(123, 37);
+            this.cmbAddress.TabIndex = 15;
+            this.cmbAddress.SelectedIndexChanged += new System.EventHandler(this.cmbAddress_SelectedIndexChanged);
             // 
             // btnSearch
             // 
@@ -356,7 +382,7 @@ namespace GUI_MAIN
             this.btnSearch.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnSearch.BackgroundImage")));
             this.btnSearch.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btnSearch.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnSearch.Location = new System.Drawing.Point(659, 30);
+            this.btnSearch.Location = new System.Drawing.Point(699, 40);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(63, 40);
             this.btnSearch.TabIndex = 3;
@@ -376,9 +402,9 @@ namespace GUI_MAIN
             this.grpAdd.Controls.Add(this.label6);
             this.grpAdd.Controls.Add(this.label4);
             this.grpAdd.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.grpAdd.Location = new System.Drawing.Point(0, 89);
+            this.grpAdd.Location = new System.Drawing.Point(0, 96);
             this.grpAdd.Name = "grpAdd";
-            this.grpAdd.Size = new System.Drawing.Size(957, 227);
+            this.grpAdd.Size = new System.Drawing.Size(957, 209);
             this.grpAdd.TabIndex = 2;
             this.grpAdd.TabStop = false;
             this.grpAdd.Text = "Nhập thông tin:";
@@ -388,7 +414,7 @@ namespace GUI_MAIN
             this.panel5.Controls.Add(this.btnAdd);
             this.panel5.Controls.Add(this.btnClear);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel5.Location = new System.Drawing.Point(3, 163);
+            this.panel5.Location = new System.Drawing.Point(3, 145);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(951, 61);
             this.panel5.TabIndex = 3;
@@ -401,7 +427,7 @@ namespace GUI_MAIN
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(885, 61);
             this.btnAdd.TabIndex = 0;
-            this.btnAdd.Text = "THÊM";
+            this.btnAdd.Text = "Thêm";
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
@@ -425,7 +451,7 @@ namespace GUI_MAIN
             this.groupBox5.Controls.Add(this.rdoOK);
             this.groupBox5.Location = new System.Drawing.Point(532, 20);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(121, 109);
+            this.groupBox5.Size = new System.Drawing.Size(145, 109);
             this.groupBox5.TabIndex = 2;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Trạng thái:";
@@ -464,7 +490,6 @@ namespace GUI_MAIN
             this.txtNote.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txtNote.Size = new System.Drawing.Size(153, 88);
             this.txtNote.TabIndex = 1;
-            this.txtNote.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtNote_KeyDown);
             // 
             // txtResistor
             // 
@@ -475,7 +500,6 @@ namespace GUI_MAIN
             this.txtResistor.Name = "txtResistor";
             this.txtResistor.Size = new System.Drawing.Size(189, 29);
             this.txtResistor.TabIndex = 1;
-            this.txtResistor.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtResistor_KeyDown);
             // 
             // txtVoltage
             // 
@@ -512,18 +536,18 @@ namespace GUI_MAIN
             this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(278, 20);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(64, 18);
+            this.label7.Size = new System.Drawing.Size(103, 18);
             this.label7.TabIndex = 0;
-            this.label7.Text = "Điện trở:";
+            this.label7.Text = "Điện trở (MΩ):";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(278, 79);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(66, 18);
+            this.label6.Size = new System.Drawing.Size(120, 18);
             this.label6.TabIndex = 0;
-            this.label6.Text = "Điện thế:";
+            this.label6.Text = "Hiệu điện thế (V):";
             // 
             // label4
             // 
@@ -534,13 +558,25 @@ namespace GUI_MAIN
             this.label4.TabIndex = 0;
             this.label4.Text = "Vị trí kệ:";
             // 
+            // label9
+            // 
+            this.label9.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(125, 22);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(56, 15);
+            this.label9.TabIndex = 1;
+            this.label9.Text = "Bộ phận:";
+            // 
             // label1
             // 
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(278, 12);
+            this.label1.Location = new System.Drawing.Point(278, 22);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(49, 15);
             this.label1.TabIndex = 1;
@@ -551,9 +587,9 @@ namespace GUI_MAIN
             this.txtAddress.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtAddress.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtAddress.Location = new System.Drawing.Point(281, 30);
+            this.txtAddress.Location = new System.Drawing.Point(281, 40);
             this.txtAddress.Name = "txtAddress";
-            this.txtAddress.Size = new System.Drawing.Size(372, 40);
+            this.txtAddress.Size = new System.Drawing.Size(396, 40);
             this.txtAddress.TabIndex = 0;
             this.txtAddress.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtAddress_KeyDown);
             // 
@@ -562,22 +598,17 @@ namespace GUI_MAIN
             this.tmrProgram.Interval = 1;
             this.tmrProgram.Tick += new System.EventHandler(this.tmrProgram_Tick);
             // 
-            // label5
+            // tmrSartLoad
             // 
-            this.label5.AutoSize = true;
-            this.label5.Dock = System.Windows.Forms.DockStyle.Right;
-            this.label5.Location = new System.Drawing.Point(778, 20);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(182, 18);
-            this.label5.TabIndex = 19;
-            this.label5.Text = "Version: 26/05/2023 09h27";
+            this.tmrSartLoad.Interval = 1;
+            this.tmrSartLoad.Tick += new System.EventHandler(this.tmrSartLoad_Tick);
             // 
             // frmMainMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(963, 790);
+            this.ClientSize = new System.Drawing.Size(963, 722);
             this.Controls.Add(this.grpMainMain);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.panel1);
@@ -660,6 +691,9 @@ namespace GUI_MAIN
         private System.Windows.Forms.Button btnManagerAddress;
         private System.Windows.Forms.Button btnExportData;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.ComboBox cmbAddress;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Timer tmrSartLoad;
     }
 }
 
