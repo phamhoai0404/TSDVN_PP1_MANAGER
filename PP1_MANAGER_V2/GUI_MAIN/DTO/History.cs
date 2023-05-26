@@ -26,7 +26,7 @@ namespace GUI_MAIN.DTO
     }
     public class Export
     {
-        public int addressID { get; set; }
+        public long deparmentID { get; set; }
         public DateTime? dateFrom { get; set; }
         public DateTime? dateTo { get; set; }
         public bool exportDate { get; set; }

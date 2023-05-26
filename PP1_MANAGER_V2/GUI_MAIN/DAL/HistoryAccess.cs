@@ -29,12 +29,13 @@ namespace GUI_MAIN.DAL
             try
             {
                 string sqlSumTotal = string.Format(@"Select COUNT(*) From History");
-                string sql = string.Format("Select TOP 300  historyDate, addressName, historyStatus, historyResistor, historyVoltage, historyNote " +
-                                           "From History " +
-                                           "LEFT JOIN Address ON Address.addressID = History.historyAddress " +
+                string sql = string.Format("Select TOP 300  historyDate, departmentName, addressName, historyStatus, historyResistor, historyVoltage, historyNote " +
+                                           "From (History " +
+                                           "LEFT JOIN Address ON Address.addressID = History.historyAddress) " +
+                                           "LEFT JOIN Department ON Address.addressDepartment = Department.departmentID " +
                                            "ORDER BY historyDate DESC"
                                            );
-
+               
                 OpenConnection();
                 using (OleDbCommand command = new OleDbCommand(sqlSumTotal, conn))
                 {
@@ -68,9 +69,9 @@ namespace GUI_MAIN.DAL
         {
 
             List<string> listSearch = new List<string>();
-            if (input.addressID != -1)
+            if (input.deparmentID != -1)
             {
-                listSearch.Add(string.Format("(historyAddress = {0})", input.addressID));
+                listSearch.Add(string.Format("(addressDepartment = {0})", input.deparmentID));
             }
             if (input.exportDate == true)
             {
@@ -84,7 +85,7 @@ namespace GUI_MAIN.DAL
                 stringWhere = "Where " + string.Join(" and ", listSearch);
             }
 
-            string sqlSearch = string.Format("Select TOP 300  historyDate, addressName, historyStatus, historyResistor, historyVoltage, historyNote " +
+            string sqlSearch = string.Format("Select TOP 300  historyDate , addressName, historyStatus, historyResistor, historyVoltage, historyNote " +
                                            "From History " +
                                            "LEFT JOIN Address ON Address.addressID = History.historyAddress " +
                                            "{0}" +

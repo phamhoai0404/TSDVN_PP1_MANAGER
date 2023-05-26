@@ -15,28 +15,22 @@ namespace GUI_MAIN
 {
     public partial class frmFormExport : Form
     {
-        public frmFormExport()
+        public frmFormExport(ComboBox comboBox )
         {
             InitializeComponent();
+            this.cmbAddress.DataSource = comboBox.DataSource;
+            this.cmbAddress.DisplayMember = "departmentName"; // Hiển thị dữ liệu từ cột "Name"
+            this.cmbAddress.ValueMember = "departmentID"; // Lấy giá trị từ cột "ID"
+            this.cmbAddress.SelectedIndex = -1;
+
+            this.valueExport.deparmentID = -1;//Set dau tien khong lua chon gia tri nao
+
         }
-        DataTable listAddress = new DataTable();
         Export valueExport = new Export();
 
         private void frmFormExport_Load(object sender, EventArgs e)
         {
-            //this.grpDate.Enabled = false;//Mac dinh dang khong chon ngay
-            //this.pnlMain.Enabled = false;
-            //string resultValue = ManagerAddress.GetDataList(ref this.listAddress);
-            //if (resultValue != RESULT.OK)
-            //{
-            //    MessageBox.Show(resultValue, "Error Load Address", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //    return;
-            //}
-            //this.cmbAddress.DataSource = this.listAddress;
-            //this.cmbAddress.DisplayMember = "addressName"; // Hiển thị dữ liệu từ cột "Name"
-            //this.cmbAddress.ValueMember = "addressID"; // Lấy giá trị từ cột "ID"
-            //this.cmbAddress.SelectedIndex = -1;
-            //this.pnlMain.Enabled = true;
+            this.grpDate.Enabled = false;//Mac dinh dang khong chon ngay
         }
 
         
@@ -56,7 +50,12 @@ namespace GUI_MAIN
                 this.pnlMain.Enabled = false;
 
                 //Thuc hien lay du lieu
-                this.valueExport.addressID = Convert.ToInt32(this.listAddress.Rows[this.cmbAddress.SelectedIndex]["addressID"]);
+
+                if(this.cmbAddress.Text != "")
+                {
+                    this.valueExport.deparmentID = Convert.ToInt64(this.cmbAddress.SelectedValue);
+                }
+
                 if (this.chkDate.Checked)
                 {
                     this.valueExport.exportDate = true;
@@ -90,9 +89,14 @@ namespace GUI_MAIN
 
                 var csv = new StringBuilder();
                 string tempAdd = "";
-                if (this.valueExport.addressID != -1)
+                if (this.valueExport.deparmentID != -1)
                 {
-                    tempAdd = "\"Vị trí:\"" + ",\"" + this.listAddress.Rows[this.valueExport.addressID]["addressName"].ToString()+ "\"";
+                    tempAdd = "\"Bộ phận:\"" + ",\"" + this.cmbAddress.Text+ "\"";
+                    csv.AppendLine(tempAdd);
+                }
+                else
+                {
+                    tempAdd = "\"Bộ phận:\"" + ",\"ALL\"";
                     csv.AppendLine(tempAdd);
                 }
                 if(this.valueExport.exportDate == true)

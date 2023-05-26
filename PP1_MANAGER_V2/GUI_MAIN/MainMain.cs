@@ -294,7 +294,7 @@ namespace GUI_MAIN
         {
             this.actionButton(false);
             this.updateLable("Xuất dữ liệu");
-            frmFormExport frmFormExport = new frmFormExport();
+            frmFormExport frmFormExport = new frmFormExport(this.cmbAddress);
             frmFormExport.ShowDialog();
             this.actionButton(true);
             this.txtAddress.Focus();

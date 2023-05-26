@@ -47,12 +47,6 @@ namespace GUI_MAIN
             this.grpMainMain = new System.Windows.Forms.GroupBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.dgvData = new System.Windows.Forms.DataGridView();
-            this.cOLUMN1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel4 = new System.Windows.Forms.Panel();
             this.lblSum = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
@@ -78,6 +72,13 @@ namespace GUI_MAIN
             this.txtAddress = new System.Windows.Forms.TextBox();
             this.tmrProgram = new System.Windows.Forms.Timer(this.components);
             this.tmrSartLoad = new System.Windows.Forms.Timer(this.components);
+            this.cOLUMN1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             this.panel6.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -275,6 +276,7 @@ namespace GUI_MAIN
             this.dgvData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvData.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.cOLUMN1,
+            this.Column7,
             this.Column2,
             this.Column3,
             this.Column4,
@@ -287,49 +289,6 @@ namespace GUI_MAIN
             this.dgvData.ReadOnly = true;
             this.dgvData.Size = new System.Drawing.Size(951, 189);
             this.dgvData.TabIndex = 1;
-            // 
-            // cOLUMN1
-            // 
-            this.cOLUMN1.HeaderText = "Ngày thêm";
-            this.cOLUMN1.Name = "cOLUMN1";
-            this.cOLUMN1.ReadOnly = true;
-            this.cOLUMN1.Width = 200;
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "Vị trí kệ";
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
-            this.Column2.Width = 200;
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "Trạng thái";
-            this.Column3.Name = "Column3";
-            this.Column3.ReadOnly = true;
-            this.Column3.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Column3.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // Column4
-            // 
-            this.Column4.HeaderText = "Điện trở";
-            this.Column4.Name = "Column4";
-            this.Column4.ReadOnly = true;
-            this.Column4.Width = 150;
-            // 
-            // Column5
-            // 
-            this.Column5.HeaderText = "Điện thế";
-            this.Column5.Name = "Column5";
-            this.Column5.ReadOnly = true;
-            this.Column5.Width = 150;
-            // 
-            // Column6
-            // 
-            this.Column6.HeaderText = "Ghi chú";
-            this.Column6.Name = "Column6";
-            this.Column6.ReadOnly = true;
-            this.Column6.Width = 300;
             // 
             // panel4
             // 
@@ -604,6 +563,55 @@ namespace GUI_MAIN
             this.tmrSartLoad.Interval = 1;
             this.tmrSartLoad.Tick += new System.EventHandler(this.tmrSartLoad_Tick);
             // 
+            // cOLUMN1
+            // 
+            this.cOLUMN1.HeaderText = "Ngày thêm";
+            this.cOLUMN1.Name = "cOLUMN1";
+            this.cOLUMN1.ReadOnly = true;
+            this.cOLUMN1.Width = 180;
+            // 
+            // Column7
+            // 
+            this.Column7.HeaderText = "Bộ phận";
+            this.Column7.Name = "Column7";
+            this.Column7.ReadOnly = true;
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "Vị trí kệ";
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            this.Column2.Width = 170;
+            // 
+            // Column3
+            // 
+            this.Column3.HeaderText = "Trạng thái";
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
+            this.Column3.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Column3.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // Column4
+            // 
+            this.Column4.HeaderText = "Điện trở";
+            this.Column4.Name = "Column4";
+            this.Column4.ReadOnly = true;
+            this.Column4.Width = 150;
+            // 
+            // Column5
+            // 
+            this.Column5.HeaderText = "Điện thế";
+            this.Column5.Name = "Column5";
+            this.Column5.ReadOnly = true;
+            this.Column5.Width = 150;
+            // 
+            // Column6
+            // 
+            this.Column6.HeaderText = "Ghi chú";
+            this.Column6.Name = "Column6";
+            this.Column6.ReadOnly = true;
+            this.Column6.Width = 300;
+            // 
             // frmMainMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
@@ -678,12 +686,6 @@ namespace GUI_MAIN
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cOLUMN1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
         private System.Windows.Forms.Button btnClear;
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Button btnSearch;
@@ -695,6 +697,13 @@ namespace GUI_MAIN
         private System.Windows.Forms.ComboBox cmbAddress;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Timer tmrSartLoad;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cOLUMN1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
     }
 }
 
