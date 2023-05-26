@@ -42,11 +42,11 @@ namespace GUI_MAIN
             this.txtAddress = new System.Windows.Forms.TextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.dgvData = new System.Windows.Forms.DataGridView();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.lblSum = new System.Windows.Forms.Label();
             this.cOLUMN1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.lblSum = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.grpAdd.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -196,25 +196,6 @@ namespace GUI_MAIN
             this.dgvData.Size = new System.Drawing.Size(574, 218);
             this.dgvData.TabIndex = 1;
             // 
-            // panel4
-            // 
-            this.panel4.Controls.Add(this.lblSum);
-            this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel4.Location = new System.Drawing.Point(3, 20);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(574, 22);
-            this.panel4.TabIndex = 0;
-            // 
-            // lblSum
-            // 
-            this.lblSum.AutoSize = true;
-            this.lblSum.Dock = System.Windows.Forms.DockStyle.Right;
-            this.lblSum.Location = new System.Drawing.Point(492, 0);
-            this.lblSum.Name = "lblSum";
-            this.lblSum.Size = new System.Drawing.Size(82, 18);
-            this.lblSum.TabIndex = 1;
-            this.lblSum.Text = "Số bản ghi:";
-            // 
             // cOLUMN1
             // 
             this.cOLUMN1.HeaderText = "ID";
@@ -234,6 +215,25 @@ namespace GUI_MAIN
             this.Column2.Name = "Column2";
             this.Column2.ReadOnly = true;
             this.Column2.Width = 500;
+            // 
+            // panel4
+            // 
+            this.panel4.Controls.Add(this.lblSum);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel4.Location = new System.Drawing.Point(3, 20);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(574, 22);
+            this.panel4.TabIndex = 0;
+            // 
+            // lblSum
+            // 
+            this.lblSum.AutoSize = true;
+            this.lblSum.Dock = System.Windows.Forms.DockStyle.Right;
+            this.lblSum.Location = new System.Drawing.Point(492, 0);
+            this.lblSum.Name = "lblSum";
+            this.lblSum.Size = new System.Drawing.Size(82, 18);
+            this.lblSum.TabIndex = 1;
+            this.lblSum.Text = "Số bản ghi:";
             // 
             // frmFormAddress
             // 

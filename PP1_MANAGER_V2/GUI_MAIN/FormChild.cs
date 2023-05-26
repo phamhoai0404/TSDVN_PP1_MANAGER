@@ -42,7 +42,40 @@ namespace GUI_MAIN
 
         private void frmFormChild_Load(object sender, EventArgs e)
         {
+            //SetFucntion
+            this.rdoOK.Checked = true;
+            this.txtResistor.TextChanged += TextBox_TextChanged;
+            this.txtVoltage.TextChanged += TextBox_TextChanged;
+
             this.txtResistor.Focus();
+        }
+        //Thuc hien lay
+        private void TextBox_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                long valueA = 0;
+                long valueB = 0;
+
+                bool isValidA = long.TryParse(this.txtResistor.Text, out valueA);
+                bool isValidB = long.TryParse(this.txtVoltage.Text, out valueB);
+
+
+                if (valueA > 1000 || valueB > 100)
+                {
+                    this.rdoNG.Checked = true;
+                }
+                else
+                {
+                    this.rdoOK.Checked = true;
+                }
+
+            }
+            catch
+            {
+                this.rdoOK.Checked = true;
+            }
+
         }
 
         private void btnCloseChild_Click(object sender, EventArgs e)
@@ -81,6 +114,32 @@ namespace GUI_MAIN
             this.historyMain.historyStatus = this.rdoOK.Checked;//Thuc hien lay  trang thai
         }
 
-      
+        private void rdoOK_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rdoOK.Checked == true)
+            {
+                rdoOK.ForeColor = Color.Green;
+                rdoOK.Font = new Font(rdoOK.Font.FontFamily, 18, rdoOK.Font.Style);
+                rdoNG.ForeColor = Color.Black;
+                rdoNG.Font = new Font(rdoNG.Font.FontFamily, 14, rdoNG.Font.Style);
+            }
+            else
+            {
+                rdoOK.ForeColor = Color.Black;
+                rdoOK.Font = new Font(rdoOK.Font.FontFamily, 14, rdoOK.Font.Style);
+                rdoNG.ForeColor = Color.Red;
+                rdoNG.Font = new Font(rdoNG.Font.FontFamily, 18, rdoNG.Font.Style);
+            }
+        }
+
+        private void txtResistor_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        
     }
 }

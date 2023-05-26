@@ -141,7 +141,6 @@ namespace GUI_MAIN
         {
             this.tmrSartLoad.Stop();
             this.updateLable("Load dữ liệu bộ phận");
-
             DataTable listDepartment = new DataTable();
             string resultValue = ActionMain.GetDepartment(ref listDepartment);
             if (resultValue != RESULT.OK)
@@ -156,6 +155,7 @@ namespace GUI_MAIN
             this.addressMain.addressDepartment = -1;
             this.addressMain.departmentName = "";
 
+            this.rdoOK.Checked = true;
             this.tmrProgram.Start();
         }
 
@@ -187,6 +187,7 @@ namespace GUI_MAIN
                     this.updateLable("Trường hợp đã có dữ liệu");
                     frmFormChild formChild = new frmFormChild(this.addressMain, this.listAfter);
                     formChild.ShowDialog();
+                    this.txtAddress.Text = "";
                     if (formChild.actionAddData == true)
                     {
                         this.tmrProgram.Start();
@@ -194,7 +195,7 @@ namespace GUI_MAIN
                     return;
                 }
 
-                
+
                 if (resultValue != RESULT.OK)
                 {
                     MessageBox.Show(resultValue, "Error Input Address", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -234,10 +235,42 @@ namespace GUI_MAIN
                 MessageBox.Show(resultValue, "Error Get Data", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-
             this.lblSum.Text = "Số bản ghi: " + totalSum;
+
+            //SetFucntion 
+            this.txtResistor.TextChanged += TextBox_TextChanged;
+            this.txtVoltage.TextChanged += TextBox_TextChanged;
+
             this.actionButton(true);
             this.txtAddress.Focus();
+
+        }
+        //Thuc hien lay
+        private void TextBox_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                long valueA = 0;
+                long valueB = 0;
+
+                bool isValidA = long.TryParse(this.txtResistor.Text, out valueA);
+                bool isValidB = long.TryParse(this.txtVoltage.Text, out valueB);
+
+
+                if (valueA > 1000 || valueB > 100)
+                {
+                    this.rdoNG.Checked = true;
+                }
+                else
+                {
+                    this.rdoOK.Checked = true;
+                }
+
+            }
+            catch
+            {
+                this.rdoOK.Checked = true;
+            }
 
         }
 
@@ -274,9 +307,45 @@ namespace GUI_MAIN
                 this.addressMain.addressDepartment = Convert.ToInt32(this.cmbAddress.SelectedValue);
                 this.addressMain.departmentName = this.cmbAddress.Text;
             }
-            catch 
+            catch
             {
             }
         }
+
+        private void txtResistor_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtVoltage_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void rdoOK_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rdoOK.Checked == true)
+            {
+                rdoOK.ForeColor = Color.Green;
+                rdoOK.Font = new Font(rdoOK.Font.FontFamily, 18, rdoOK.Font.Style);
+                rdoNG.ForeColor = Color.Black;
+                rdoNG.Font = new Font(rdoNG.Font.FontFamily, 14, rdoNG.Font.Style);
+            }
+            else
+            {
+                rdoOK.ForeColor = Color.Black;
+                rdoOK.Font = new Font(rdoOK.Font.FontFamily, 14, rdoOK.Font.Style);
+                rdoNG.ForeColor = Color.Red;
+                rdoNG.Font = new Font(rdoNG.Font.FontFamily, 18, rdoNG.Font.Style);
+            }
+        }
+
+        
     }
 }

@@ -27,6 +27,7 @@ namespace GUI_MAIN
             this.cmbAddress.DisplayMember = "departmentName"; // Hiển thị dữ liệu từ cột "Name"
             this.cmbAddress.ValueMember = "departmentID"; // Lấy giá trị từ cột "ID"
             this.cmbAddress.SelectedIndex = -1;
+            this.tempAddress.addressDepartment = -1;
         }
 
 

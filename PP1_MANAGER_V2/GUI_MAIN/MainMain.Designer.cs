@@ -470,15 +470,14 @@ namespace GUI_MAIN
             // rdoOK
             // 
             this.rdoOK.AutoSize = true;
-            this.rdoOK.Checked = true;
             this.rdoOK.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rdoOK.Location = new System.Drawing.Point(29, 38);
+            this.rdoOK.Location = new System.Drawing.Point(29, 32);
             this.rdoOK.Name = "rdoOK";
             this.rdoOK.Size = new System.Drawing.Size(57, 28);
             this.rdoOK.TabIndex = 0;
-            this.rdoOK.TabStop = true;
             this.rdoOK.Text = "OK";
             this.rdoOK.UseVisualStyleBackColor = true;
+            this.rdoOK.CheckedChanged += new System.EventHandler(this.rdoOK_CheckedChanged);
             // 
             // txtNote
             // 
@@ -500,6 +499,7 @@ namespace GUI_MAIN
             this.txtResistor.Name = "txtResistor";
             this.txtResistor.Size = new System.Drawing.Size(189, 29);
             this.txtResistor.TabIndex = 1;
+            this.txtResistor.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtResistor_KeyPress);
             // 
             // txtVoltage
             // 
@@ -510,6 +510,7 @@ namespace GUI_MAIN
             this.txtVoltage.Name = "txtVoltage";
             this.txtVoltage.Size = new System.Drawing.Size(189, 29);
             this.txtVoltage.TabIndex = 1;
+            this.txtVoltage.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtVoltage_KeyPress);
             // 
             // lblAddress
             // 
