@@ -18,7 +18,7 @@ namespace GUI_MAIN
         {
             InitializeComponent();
         }
-
+        private Address tempAddress = new Address();
 
         public frmFormAddress(ComboBox combobox)
         {
@@ -33,13 +33,14 @@ namespace GUI_MAIN
         private void frmFormAddress_Load(object sender, EventArgs e)
         {
             this.grpAdd.Enabled = false;
-            string resultValue = ManagerAddress.GetDataAddress(ref this.dgvData);
+            string totalRow = "";
+            string resultValue = ManagerAddress.GetDataAddress(ref totalRow, ref this.dgvData);
             if (resultValue != RESULT.OK)
             {
                 MessageBox.Show(resultValue, "Error Load Address", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            this.lblSum.Text = "Số bản ghi: " + this.dgvData.Rows.Count;
+            this.lblSum.Text = "Số bản ghi: " + totalRow;
             this.grpAdd.Enabled = true;
             this.txtAddress.Focus();
         }
@@ -59,7 +60,10 @@ namespace GUI_MAIN
             try
             {
                 this.grpAdd.Enabled = false;
-                string resultValue = ManagerAddress.AddAddress(this.txtAddress.Text);
+
+                this.tempAddress.addressName = this.txtAddress.Text;
+              
+                string resultValue = ManagerAddress.AddAddress(this.tempAddress);
                 if (resultValue != RESULT.OK)
                 {
                     MessageBox.Show(resultValue, "Error Add Address", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -68,15 +72,15 @@ namespace GUI_MAIN
                 }
 
                 MessageBox.Show("Thêm thành công vị trí: " + this.txtAddress.Text + "!", "Successful", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                ManagerAddress.GetDataAddress(ref this.dgvData);
+                string totalRow = "";
+                ManagerAddress.GetDataAddress(ref totalRow, ref this.dgvData);
                 if (resultValue != RESULT.OK)
                 {
                     MessageBox.Show(resultValue, "Error ReLoad Address", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     this.grpAdd.Enabled = false;
                     return;
                 }
-                this.lblSum.Text = "Số bản ghi: " + this.dgvData.Rows.Count;
+                this.lblSum.Text = "Số bản ghi: " + totalRow;
                 this.grpAdd.Enabled = true;
                 this.txtAddress.Text = "";
 
@@ -94,6 +98,12 @@ namespace GUI_MAIN
             {
                 this.btnAddAddress.PerformClick();
             }
+        }
+
+        private void cmbAddress_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            this.tempAddress.addressDepartment = Convert.ToInt32(this.cmbAddress.SelectedValue);
+            this.tempAddress.departmentName = this.cmbAddress.Text;
         }
     }
 }

@@ -42,10 +42,11 @@ namespace GUI_MAIN
             this.txtAddress = new System.Windows.Forms.TextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.dgvData = new System.Windows.Forms.DataGridView();
-            this.cOLUMN1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel4 = new System.Windows.Forms.Panel();
             this.lblSum = new System.Windows.Forms.Label();
+            this.cOLUMN1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             this.grpAdd.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -100,6 +101,7 @@ namespace GUI_MAIN
             this.cmbAddress.Name = "cmbAddress";
             this.cmbAddress.Size = new System.Drawing.Size(372, 37);
             this.cmbAddress.TabIndex = 17;
+            this.cmbAddress.SelectedIndexChanged += new System.EventHandler(this.cmbAddress_SelectedIndexChanged);
             // 
             // label9
             // 
@@ -184,6 +186,7 @@ namespace GUI_MAIN
             this.dgvData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvData.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.cOLUMN1,
+            this.Column3,
             this.Column2});
             this.dgvData.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvData.GridColor = System.Drawing.SystemColors.Control;
@@ -192,20 +195,6 @@ namespace GUI_MAIN
             this.dgvData.ReadOnly = true;
             this.dgvData.Size = new System.Drawing.Size(574, 218);
             this.dgvData.TabIndex = 1;
-            // 
-            // cOLUMN1
-            // 
-            this.cOLUMN1.HeaderText = "ID";
-            this.cOLUMN1.Name = "cOLUMN1";
-            this.cOLUMN1.ReadOnly = true;
-            this.cOLUMN1.Width = 200;
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "Tên vị trí kệ";
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
-            this.Column2.Width = 500;
             // 
             // panel4
             // 
@@ -225,6 +214,26 @@ namespace GUI_MAIN
             this.lblSum.Size = new System.Drawing.Size(82, 18);
             this.lblSum.TabIndex = 1;
             this.lblSum.Text = "Số bản ghi:";
+            // 
+            // cOLUMN1
+            // 
+            this.cOLUMN1.HeaderText = "ID";
+            this.cOLUMN1.Name = "cOLUMN1";
+            this.cOLUMN1.ReadOnly = true;
+            // 
+            // Column3
+            // 
+            this.Column3.HeaderText = "Bộ phận";
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
+            this.Column3.Width = 200;
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "Tên vị trí kệ";
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            this.Column2.Width = 500;
             // 
             // frmFormAddress
             // 
@@ -261,8 +270,6 @@ namespace GUI_MAIN
         private System.Windows.Forms.GroupBox grpAdd;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.DataGridView dgvData;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cOLUMN1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Label lblSum;
         private System.Windows.Forms.TextBox txtAddress;
@@ -272,5 +279,8 @@ namespace GUI_MAIN
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox cmbAddress;
         private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cOLUMN1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
     }
 }

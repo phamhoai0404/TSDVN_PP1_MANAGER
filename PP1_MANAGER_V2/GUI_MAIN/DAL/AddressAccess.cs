@@ -33,17 +33,40 @@ namespace GUI_MAIN.DAL
             return string.Format(RESULT.ERROR_MULTI_ADDRESS, add.addressName, tempData.Rows.Count, add.departmentName);
 
         }
-        public static string GetData(ref DataTable tempData)
-        {
-            string sql = "Select * from Address";
-            return GetListDataTable(sql, ref tempData);
-        }
-
-        public static string AddAddress(string address)
+        public static string GetData(ref string totalRow, ref DataTable tempData)
         {
             try
             {
-                string sql = string.Format("Select * from Address where addressName = '{0}'", address);
+                string sqlSumTotal = "Select Count(*) from Address";
+                string sql = string.Format("Select TOP 300  addressID, departmentName, addressName " +
+                                          "From Address " +
+                                          "LEFT JOIN Department ON Address.addressDepartment = Department.departmentID ");
+
+                OpenConnection();
+                using (OleDbCommand command = new OleDbCommand(sqlSumTotal, conn))
+                {
+                    totalRow = command.ExecuteScalar().ToString();
+                }
+                using (OleDbDataAdapter adapter = new OleDbDataAdapter(sql, conn))
+                {
+                    adapter.Fill(tempData);
+                }
+                CloseConnection();
+
+                return RESULT.OK;
+            }
+            catch (Exception ex)
+            {
+                CloseConnection();
+                return string.Format(RESULT.ERROR_015_CATCH, "GetData", ex.Message);
+            }
+        }
+
+        public static string AddAddress(Address address)
+        {
+            try
+            {
+                string sql = string.Format("Select * from Address where addressName = '{0}'", address.addressName);
                 DataTable tempData = new DataTable();
                 OpenConnection();
 
@@ -52,10 +75,10 @@ namespace GUI_MAIN.DAL
                 if (tempData.Rows.Count >= 1)
                 {
                     CloseConnection();
-                    return string.Format(RESULT.ERROR_FORMADDRESS_CHECKEXIST,address);
+                    return string.Format(RESULT.ERROR_FORMADDRESS_CHECKEXIST, address.addressName);
                 }
 
-                sql = string.Format("INSERT INTO Address(addressName) VALUES('{0}')", address);
+                sql = string.Format("INSERT INTO Address(addressName, addressDepartment) VALUES('{0}', {1})", address.addressName, address.addressDepartment);
 
                 return ExecuteNonQuery(sql);
             }

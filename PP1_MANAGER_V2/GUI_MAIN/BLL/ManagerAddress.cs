@@ -12,11 +12,11 @@ namespace GUI_MAIN.BLL
 {
     public class ManagerAddress
     {
-        public static string GetDataAddress(ref DataGridView dgv)
+        public static string GetDataAddress(ref string totalRow, ref DataGridView dgv)
         {
             DataTable table = new DataTable();
 
-            string resultValue = AddressAccess.GetData(ref table);
+            string resultValue = AddressAccess.GetData(ref totalRow, ref table);
             if (resultValue != RESULT.OK)
             {
                 return resultValue;
@@ -31,12 +31,12 @@ namespace GUI_MAIN.BLL
         }
         public static string GetDataList(ref DataTable table)
         {
-            table.Clear();
-            string resultValue = AddressAccess.GetData(ref table);
-            if (resultValue != RESULT.OK)
-            {
-                return resultValue;
-            }
+            //table.Clear();
+            ////string resultValue = AddressAccess.GetData(ref table);
+            //if (resultValue != RESULT.OK)
+            //{
+            //    return resultValue;
+            //}
           
             ////Clear Data
             //listAddress.Clear();
@@ -49,15 +49,19 @@ namespace GUI_MAIN.BLL
             return RESULT.OK;
 
         }
-        public static string AddAddress(string address)
+        public static string AddAddress(Address tempAddress)
         {
-            if (string.IsNullOrWhiteSpace(address))
+            if(tempAddress.addressDepartment == -1)
+            {
+                return RESULT.ERROR_MUST_SELECT_DEPARTMENT;
+            }
+            if (string.IsNullOrWhiteSpace(tempAddress.addressName))
             {
                 return RESULT.ERROR_VALIDATE_FORMADDRESS;
             }
 
-            address = address.Trim();//Loai bo ki tu thua
-            return AddressAccess.AddAddress(address);
+            tempAddress.addressName = tempAddress.addressName.Trim();//Loai bo ki tu thua
+            return AddressAccess.AddAddress(tempAddress);
         }
     }
 }

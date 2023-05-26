@@ -24,19 +24,19 @@ namespace GUI_MAIN
 
         private void frmFormExport_Load(object sender, EventArgs e)
         {
-            this.grpDate.Enabled = false;//Mac dinh dang khong chon ngay
-            this.pnlMain.Enabled = false;
-            string resultValue = ManagerAddress.GetDataList(ref this.listAddress);
-            if (resultValue != RESULT.OK)
-            {
-                MessageBox.Show(resultValue, "Error Load Address", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-            this.cmbAddress.DataSource = this.listAddress;
-            this.cmbAddress.DisplayMember = "addressName"; // Hiển thị dữ liệu từ cột "Name"
-            this.cmbAddress.ValueMember = "addressID"; // Lấy giá trị từ cột "ID"
-            this.cmbAddress.SelectedIndex = -1;
-            this.pnlMain.Enabled = true;
+            //this.grpDate.Enabled = false;//Mac dinh dang khong chon ngay
+            //this.pnlMain.Enabled = false;
+            //string resultValue = ManagerAddress.GetDataList(ref this.listAddress);
+            //if (resultValue != RESULT.OK)
+            //{
+            //    MessageBox.Show(resultValue, "Error Load Address", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    return;
+            //}
+            //this.cmbAddress.DataSource = this.listAddress;
+            //this.cmbAddress.DisplayMember = "addressName"; // Hiển thị dữ liệu từ cột "Name"
+            //this.cmbAddress.ValueMember = "addressID"; // Lấy giá trị từ cột "ID"
+            //this.cmbAddress.SelectedIndex = -1;
+            //this.pnlMain.Enabled = true;
         }
 
         

@@ -271,7 +271,6 @@ namespace GUI_MAIN
         {
             try
             {
-                
                 this.addressMain.addressDepartment = Convert.ToInt32(this.cmbAddress.SelectedValue);
                 this.addressMain.departmentName = this.cmbAddress.Text;
             }
