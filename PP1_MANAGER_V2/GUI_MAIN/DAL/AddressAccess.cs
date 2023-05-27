@@ -89,5 +89,97 @@ namespace GUI_MAIN.DAL
                 return string.Format(RESULT.ERROR_015_CATCH, "AddAddress", ex.Message);
             }
         }
+
+        public static string CheckExistAddressMulti(string multiAddress)
+        {
+            string sql = string.Format("Select departmentName, addressName " +
+                                        "from Address " +
+                                        "LEFT JOIN Department ON Address.addressDepartment = Department.departmentID " +
+                                        "where {0}", multiAddress);
+
+            DataTable tempData = new DataTable();
+            string reusltTemp = GetListDataTable(sql, ref tempData);
+            if (reusltTemp != RESULT.OK)
+            {
+                return reusltTemp;
+            }
+            if (tempData.Rows.Count == 0)
+            {
+                return RESULT.OK;
+            }
+
+            return "Đã tồn tại dữ liệu: " + tempData.Rows.Count + " row \n" + GetDataTable(tempData);
+        }
+        public static string AddAddressMulti(List<ImportAddress> listAddress)
+        {
+            OleDbCommand cmdSQL = new OleDbCommand();
+            string tempFirst = @"INSERT INTO Address( addressName, addressDepartment ) VALUES ('{0}', {1})";
+
+            try
+            {
+                OpenConnection();
+                cmdSQL.Connection = conn;
+                cmdSQL.Transaction = conn.BeginTransaction();
+                string sqlAdd = "";
+                foreach (var item in listAddress)
+                {
+                    sqlAdd = string.Format(tempFirst, item.addressName, item.departmentID);
+                    cmdSQL.CommandText = sqlAdd;
+                    cmdSQL.ExecuteNonQuery();
+                }
+
+                cmdSQL.Transaction.Commit();
+
+                CloseConnection();
+                cmdSQL.Dispose();
+                cmdSQL = null;
+
+                return RESULT.OK;
+            }
+            catch (Exception ex)
+            {
+                cmdSQL.Transaction.Rollback();
+                CloseConnection();
+                return string.Format(RESULT.ERROR_015_CATCH, "AddAddressMulti", ex.Message);
+            }
+
+        }
+
+        /// <summary>
+        /// Thuc hien lay du lieu cua GetDataTable de hien thi
+        /// </summary>
+        /// <param name="dataTable"></param>
+        /// <returns></returns>
+        private static string GetDataTable(DataTable dataTable)
+        {
+
+            StringBuilder stringBuilder = new StringBuilder();
+
+            int columnCount = dataTable.Columns.Count;
+
+            // Lấy danh sách tên cột
+            List<string> columnNames = dataTable.Columns.Cast<DataColumn>().Select(column => column.ColumnName).ToList();
+
+            // Xây dựng chuỗi tiêu đề cột
+            stringBuilder.AppendLine(string.Join("\t", columnNames));
+
+            // Duyệt qua từng dòng trong DataTable
+            foreach (DataRow row in dataTable.Rows)
+            {
+                // Lấy giá trị của từng ô dữ liệu trong dòng
+                List<string> rowValues = new List<string>();
+                foreach (var item in row.ItemArray)
+                {
+                    rowValues.Add(item.ToString());
+                }
+
+                // Xây dựng chuỗi dữ liệu của dòng hiện tại
+                stringBuilder.AppendLine(string.Join("\t", rowValues));
+            }
+
+            return stringBuilder.ToString();
+        }
+
     }
 }
+

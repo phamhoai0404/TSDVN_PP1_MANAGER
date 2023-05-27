@@ -37,6 +37,7 @@ namespace GUI_MAIN
             this.label9 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnImportExcel = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
             this.btnAddAddress = new System.Windows.Forms.Button();
             this.txtAddress = new System.Windows.Forms.TextBox();
@@ -128,6 +129,7 @@ namespace GUI_MAIN
             // groupBox1
             // 
             this.groupBox1.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.groupBox1.Controls.Add(this.btnImportExcel);
             this.groupBox1.Controls.Add(this.btnClose);
             this.groupBox1.Controls.Add(this.btnAddAddress);
             this.groupBox1.Location = new System.Drawing.Point(108, 156);
@@ -137,11 +139,21 @@ namespace GUI_MAIN
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Hành động:";
             // 
+            // btnImportExcel
+            // 
+            this.btnImportExcel.Location = new System.Drawing.Point(139, 28);
+            this.btnImportExcel.Name = "btnImportExcel";
+            this.btnImportExcel.Size = new System.Drawing.Size(108, 41);
+            this.btnImportExcel.TabIndex = 0;
+            this.btnImportExcel.Text = "Import Excel";
+            this.btnImportExcel.UseVisualStyleBackColor = true;
+            this.btnImportExcel.Click += new System.EventHandler(this.btnImportExcel_Click);
+            // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(195, 28);
+            this.btnClose.Location = new System.Drawing.Point(264, 28);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(152, 41);
+            this.btnClose.Size = new System.Drawing.Size(83, 41);
             this.btnClose.TabIndex = 0;
             this.btnClose.Text = "Đóng";
             this.btnClose.UseVisualStyleBackColor = true;
@@ -151,7 +163,7 @@ namespace GUI_MAIN
             // 
             this.btnAddAddress.Location = new System.Drawing.Point(29, 28);
             this.btnAddAddress.Name = "btnAddAddress";
-            this.btnAddAddress.Size = new System.Drawing.Size(148, 41);
+            this.btnAddAddress.Size = new System.Drawing.Size(91, 41);
             this.btnAddAddress.TabIndex = 0;
             this.btnAddAddress.Text = "Thêm";
             this.btnAddAddress.UseVisualStyleBackColor = true;
@@ -282,5 +294,6 @@ namespace GUI_MAIN
         private System.Windows.Forms.DataGridViewTextBoxColumn cOLUMN1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.Button btnImportExcel;
     }
 }

@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MyExcel = Microsoft.Office.Interop.Excel;
 
 namespace GUI_MAIN
 {
@@ -63,7 +64,7 @@ namespace GUI_MAIN
                 this.grpAdd.Enabled = false;
 
                 this.tempAddress.addressName = this.txtAddress.Text;
-              
+
                 string resultValue = ManagerAddress.AddAddress(this.tempAddress);
                 if (resultValue != RESULT.OK)
                 {
@@ -105,6 +106,53 @@ namespace GUI_MAIN
         {
             this.tempAddress.addressDepartment = Convert.ToInt32(this.cmbAddress.SelectedValue);
             this.tempAddress.departmentName = this.cmbAddress.Text;
+        }
+
+        /// <summary>
+        /// Thuc hien chuc nang import excel
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnImportExcel_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                try
+                {
+                    this.grpAdd.Enabled = false;
+                    using (var ofd = new OpenFileDialog())
+                    {
+                        ofd.Filter = "Excel file: |*.xlsx;";
+                        if (ofd.ShowDialog() == DialogResult.OK)
+                        {
+                            List<ImportAddress> listAdd = new List<ImportAddress>();
+                            string resultValue = ManagerAddress.CheckFileImport(ofd.FileName, ref listAdd, this.cmbAddress);
+                            if (resultValue != RESULT.OK)
+                            {
+                                MessageBox.Show(resultValue, "Error Add Address", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                return;
+                            }
+                            DialogResult dialogResult = MessageBox.Show("Bạn có thực sự muốn chèn file excel: " + ofd.FileName + "?", "Confirm Import File", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                            if (dialogResult == DialogResult.Yes)
+                            {
+                                resultValue = ManagerAddress.AddAddressMulti(listAdd);
+                                MessageBox.Show("OK");
+                            }
+
+                               
+                        }
+                    }
+                }
+                finally
+                {
+                    this.grpAdd.Enabled = true;
+                }
+            }
+            finally
+            {
+
+
+            }
         }
     }
 }

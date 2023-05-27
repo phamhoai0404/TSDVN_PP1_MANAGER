@@ -19,4 +19,20 @@ namespace GUI_MAIN.DTO
             this.addressName = temp.addressName;
         }
     }
+    public class ImportAddress
+    {
+        public string addressName { get; set; }
+        public int departmentID { get; set; }
+     //   public int departmentName { get; set; }
+
+        public ImportAddress()
+        {
+
+        }
+        public ImportAddress(ImportAddress s)
+        {
+            this.addressName = s.addressName;
+            this.departmentID = s.departmentID;
+        }
+    }
 }

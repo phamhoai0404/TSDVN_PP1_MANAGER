@@ -27,9 +27,16 @@ namespace GUI_MAIN.DTO
         public const string ERROR_FORMEXPORT_DATE = "Ngày Từ <= Ngày đến!";
         public const string ERROR_FORMEXPORT_NOTDATA = "Không có dữ liệu thỏa mãn để export!";
 
+        public const string ERROR_IMPORT_SHEETNAME = "SheetName: {0} => Không tồn tại vui lòng kiểm tra lại file import!";
+        public const string ERROR_IMPORT_NOT_DEPARTMENT = "Trong file excle row: {0} => Không tồn tại tên bộ phận: {1} !";
+        public const string ERROR_IMPORT_NOTNULL_DEPARTMENT = "Trong file excle row: {0} => không được để trống tên bộ phận !";
+        public const string ERROR_IMPORT_ADDRESS_DUPPLICATE = "Vị trí: {0} => Đang bị  trùng lặp !";
+        public const string ERROR_IMPORT_NOT_DATA= "Không có giá trị trong dữ liệu file import: {0}!";
+        
     }
     public class MdlCommon
     {
         public const int NOT_ADDRESS = -1;
+        public const int NOT_DEPARTMENT = -1;
     }
 }
