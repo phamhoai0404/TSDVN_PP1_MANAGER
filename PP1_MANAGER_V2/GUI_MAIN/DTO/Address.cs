@@ -23,7 +23,6 @@ namespace GUI_MAIN.DTO
     {
         public string addressName { get; set; }
         public int departmentID { get; set; }
-     //   public int departmentName { get; set; }
 
         public ImportAddress()
         {

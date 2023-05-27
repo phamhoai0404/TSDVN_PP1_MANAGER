@@ -5,6 +5,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -88,33 +89,30 @@ namespace GUI_MAIN.BLL
 
         public static string CheckFileImport(string fileName, ref List<ImportAddress> listAdd, ComboBox dataDepartment)
         {
+            MyExcel.Application app = null;
+            MyExcel.Workbook wb = null;
+            MyExcel.Worksheet ws = null;
             try
             {
-                MyExcel.Application app = null;
-                MyExcel.Workbook wb = null;
-                MyExcel.Worksheet ws = null;
-
                 app = new MyExcel.Application();
                 app.AskToUpdateLinks = false;
                 app.DisplayAlerts = false;
 
-
                 wb = app.Workbooks.Open(fileName, false);
                 string sheetName = "DATA";
-                if (CheckExistSheetName(wb, sheetName) == false)
+                if (!CheckExistSheetName(wb, sheetName))
                 {
                     wb.Close();
                     return string.Format(RESULT.ERROR_IMPORT_SHEETNAME, sheetName);
                 }
                 ws = wb.Sheets[sheetName];//Thuc hien gan gia tri ws
-
                 long lastRow = ws.Cells[ws.Rows.Count, "A"].End[MyExcel.XlDirection.xlUp].Row; ;
                 object[,] values = (object[,])ws.Range["A" + 2, "B" + lastRow].Value2;
                 wb.Close();
 
+
                 DataTable temp = new DataTable();
                 GetDataTable(ref temp, dataDepartment);
-
                 ImportAddress tempAddress = new ImportAddress();
                 for (long row = 1; row <= values.GetLength(0); row++)
                 {
@@ -140,20 +138,27 @@ namespace GUI_MAIN.BLL
 
                 string check = "";
                 bool tempCheckDupliate = CheckDuplicateAddress(listAdd, ref check);
-                if (tempCheckDupliate == true)
+                if (tempCheckDupliate)
                 {
                     return string.Format(RESULT.ERROR_IMPORT_ADDRESS_DUPPLICATE, check);
                 }
 
-                string multiAddress = string.Join(" OR ", listAdd.Select(item => $"addressName = '{item.addressName}'"));
-                return AddressAccess.CheckExistAddressMulti(multiAddress);
+                return AddressAccess.CheckExistAddressMulti(string.Join(",", listAdd.Select(item => $"'{item.addressName}'")));
             }
             catch (Exception ex )
             {
                 return string.Format(RESULT.ERROR_015_CATCH, "CheckFileImport", ex.Message);
             }
+            finally
+            {
+                if (app != null)
+                {
+                    app.Quit();
+                    Marshal.ReleaseComObject(app);
+                }
+            }
         }
-
+        
         public static string AddAddressMulti(List<ImportAddress> listAdd)
         {
             return AddressAccess.AddAddressMulti(listAdd);

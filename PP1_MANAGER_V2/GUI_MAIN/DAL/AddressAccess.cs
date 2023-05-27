@@ -95,7 +95,7 @@ namespace GUI_MAIN.DAL
             string sql = string.Format("Select departmentName, addressName " +
                                         "from Address " +
                                         "LEFT JOIN Department ON Address.addressDepartment = Department.departmentID " +
-                                        "where {0}", multiAddress);
+                                        "where addressName IN ({0})", multiAddress);
 
             DataTable tempData = new DataTable();
             string reusltTemp = GetListDataTable(sql, ref tempData);

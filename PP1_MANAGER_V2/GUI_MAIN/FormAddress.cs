@@ -136,10 +136,8 @@ namespace GUI_MAIN
                             if (dialogResult == DialogResult.Yes)
                             {
                                 resultValue = ManagerAddress.AddAddressMulti(listAdd);
-                                MessageBox.Show("OK");
-                            }
-
-                               
+                                MessageBox.Show("Import thành công các vị trí: " + listAdd.Count, "Import Excel Successful", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }    
                         }
                     }
                 }
