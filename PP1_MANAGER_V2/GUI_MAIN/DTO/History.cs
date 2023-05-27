@@ -24,8 +24,9 @@ namespace GUI_MAIN.DTO
             this.historyNote = this.historyNote?.Trim();
         }
     }
-    public class Export
+    public class SearchData
     {
+        public string keySearch { get; set; }
         public long deparmentID { get; set; }
         public DateTime? dateFrom { get; set; }
         public DateTime? dateTo { get; set; }

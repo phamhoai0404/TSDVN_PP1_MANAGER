@@ -6,12 +6,13 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace GUI_MAIN.BLL
 {
     public class ActionExport
     {
-        public static string ExportData(Export inputData, ref DataTable tempValue)
+        public static string ExportData(SearchData inputData, ref DataTable tempValue)
         {
             if(inputData.exportDate == true)
             {
@@ -22,7 +23,7 @@ namespace GUI_MAIN.BLL
             }
 
             tempValue.Clear();//Thuc hien clear du lieu
-            string resultValue = HistoryAccess.SearchData(inputData, ref tempValue);
+            string resultValue = HistoryAccess.SearchDataExport(inputData, ref tempValue);
             if(resultValue != RESULT.OK)
             {
                 return resultValue;
@@ -34,6 +35,32 @@ namespace GUI_MAIN.BLL
 
             return RESULT.OK;
         }
-        
+
+        public static string GetDataSearch(SearchData inputData, ref DataGridView dgv, ref string totalRow)
+        {
+            if (inputData.exportDate == true)
+            {
+                if (inputData.dateFrom?.Date > inputData.dateTo?.Date)
+                {
+                    return RESULT.ERROR_FORMEXPORT_DATE;
+                }
+            }
+
+            DataTable tempValue = new DataTable();
+            string resultValue = HistoryAccess.SearchDataView(inputData, ref tempValue, ref totalRow);
+            if (resultValue != RESULT.OK)
+            {
+                return resultValue;
+            }
+
+            dgv.Rows.Clear();
+            foreach (DataRow row in tempValue.Rows)
+            {
+                dgv.Rows.Add(row.ItemArray);
+            }
+            return RESULT.OK;
+
+        }
+
     }
 }

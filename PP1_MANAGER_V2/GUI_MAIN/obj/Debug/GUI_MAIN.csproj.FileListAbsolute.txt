@@ -23,4 +23,3 @@ D:\hoai\Hoai_Daotao\vs\PP\PP1_MANAGER\PP1_MANAGER_V2\GUI_MAIN\obj\Debug\GUI_MAIN
 D:\hoai\Hoai_Daotao\vs\PP\PP1_MANAGER\PP1_MANAGER_V2\GUI_MAIN\obj\Debug\GUI_MAIN.csproj.CoreCompileInputs.cache
 D:\hoai\Hoai_Daotao\vs\PP\PP1_MANAGER\PP1_MANAGER_V2\GUI_MAIN\obj\Debug\GUI_MAIN.exe
 D:\hoai\Hoai_Daotao\vs\PP\PP1_MANAGER\PP1_MANAGER_V2\GUI_MAIN\obj\Debug\GUI_MAIN.pdb
-D:\hoai\Hoai_Daotao\vs\PP\PP1_MANAGER\PP1_MANAGER_V2\GUI_MAIN\obj\Debug\GUI_MAIN.csprojAssemblyReference.cache

@@ -35,15 +35,7 @@ namespace GUI_MAIN
         private void frmFormAddress_Load(object sender, EventArgs e)
         {
             this.grpAdd.Enabled = false;
-            string totalRow = "";
-            string resultValue = ManagerAddress.GetDataAddress(ref totalRow, ref this.dgvData);
-            if (resultValue != RESULT.OK)
-            {
-                MessageBox.Show(resultValue, "Error Load Address", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-            this.lblSum.Text = "Số bản ghi: " + totalRow;
-            this.grpAdd.Enabled = true;
+            this.ReLoad();
             this.txtAddress.Focus();
         }
 
@@ -74,17 +66,8 @@ namespace GUI_MAIN
                 }
 
                 MessageBox.Show("Thêm thành công vị trí: " + this.txtAddress.Text + "!", "Successful", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                string totalRow = "";
-                ManagerAddress.GetDataAddress(ref totalRow, ref this.dgvData);
-                if (resultValue != RESULT.OK)
-                {
-                    MessageBox.Show(resultValue, "Error ReLoad Address", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    this.grpAdd.Enabled = false;
-                    return;
-                }
-                this.lblSum.Text = "Số bản ghi: " + totalRow;
-                this.grpAdd.Enabled = true;
-                this.txtAddress.Text = "";
+                this.ReLoad();
+              
 
             }
             finally
@@ -92,6 +75,20 @@ namespace GUI_MAIN
                 this.txtAddress.Focus();
             }
 
+        }
+        private void ReLoad()
+        {
+            string totalRow = "";
+            string resultValue = ManagerAddress.GetDataAddress(ref totalRow, ref this.dgvData);
+            if (resultValue != RESULT.OK)
+            {
+                MessageBox.Show(resultValue, "Error ReLoad Address", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                this.grpAdd.Enabled = false;
+                return;
+            }
+            this.lblSum.Text = "Số bản ghi: " + totalRow;
+            this.grpAdd.Enabled = true;
+            this.txtAddress.Text = "";
         }
 
         private void txtAddress_KeyDown(object sender, KeyEventArgs e)
@@ -137,6 +134,8 @@ namespace GUI_MAIN
                             {
                                 resultValue = ManagerAddress.AddAddressMulti(listAdd);
                                 MessageBox.Show("Import thành công các vị trí: " + listAdd.Count, "Import Excel Successful", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                                this.ReLoad();
                             }    
                         }
                     }

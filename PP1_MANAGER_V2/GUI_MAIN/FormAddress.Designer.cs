@@ -141,6 +141,7 @@ namespace GUI_MAIN
             // 
             // btnImportExcel
             // 
+            this.btnImportExcel.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnImportExcel.Location = new System.Drawing.Point(139, 28);
             this.btnImportExcel.Name = "btnImportExcel";
             this.btnImportExcel.Size = new System.Drawing.Size(108, 41);
@@ -151,6 +152,7 @@ namespace GUI_MAIN
             // 
             // btnClose
             // 
+            this.btnClose.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnClose.Location = new System.Drawing.Point(264, 28);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(83, 41);
@@ -161,6 +163,7 @@ namespace GUI_MAIN
             // 
             // btnAddAddress
             // 
+            this.btnAddAddress.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnAddAddress.Location = new System.Drawing.Point(29, 28);
             this.btnAddAddress.Name = "btnAddAddress";
             this.btnAddAddress.Size = new System.Drawing.Size(91, 41);

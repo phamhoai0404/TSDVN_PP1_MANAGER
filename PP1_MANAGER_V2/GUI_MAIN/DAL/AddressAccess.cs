@@ -40,7 +40,8 @@ namespace GUI_MAIN.DAL
                 string sqlSumTotal = "Select Count(*) from Address";
                 string sql = string.Format("Select TOP 300  addressID, departmentName, addressName " +
                                           "From Address " +
-                                          "LEFT JOIN Department ON Address.addressDepartment = Department.departmentID ");
+                                          "LEFT JOIN Department ON Address.addressDepartment = Department.departmentID " +
+                                          "ORDER BY addressID DESC");
 
                 OpenConnection();
                 using (OleDbCommand command = new OleDbCommand(sqlSumTotal, conn))
@@ -95,7 +96,7 @@ namespace GUI_MAIN.DAL
             string sql = string.Format("Select departmentName, addressName " +
                                         "from Address " +
                                         "LEFT JOIN Department ON Address.addressDepartment = Department.departmentID " +
-                                        "where addressName IN ({0})", multiAddress);
+                                        "where addressName IN ({0}) ", multiAddress);
 
             DataTable tempData = new DataTable();
             string reusltTemp = GetListDataTable(sql, ref tempData);
