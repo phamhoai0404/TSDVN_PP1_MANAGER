@@ -155,9 +155,9 @@ namespace GUI_MAIN
             this.label3.Location = new System.Drawing.Point(298, 32);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(382, 55);
+            this.label3.Size = new System.Drawing.Size(354, 55);
             this.label3.TabIndex = 9;
-            this.label3.Text = "PP1 MANAGER";
+            this.label3.Text = "PE MANAGER";
             // 
             // panel2
             // 
@@ -214,7 +214,7 @@ namespace GUI_MAIN
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(182, 18);
             this.label5.TabIndex = 19;
-            this.label5.Text = "Version: 26/05/2023 16h52";
+            this.label5.Text = "Version: 29/05/2023 09h24";
             // 
             // lblDisplay
             // 
@@ -626,7 +626,7 @@ namespace GUI_MAIN
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmMainMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "PP1 MANAGER";
+            this.Text = "PE MANAGER";
             this.Load += new System.EventHandler(this.frmMainMain_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

@@ -11,7 +11,7 @@ namespace GUI_MAIN.DAL
 {
     public class BaseAccess
     {
-        private static string connectString = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=|DataDirectory|\DATABASE\Database_DT.accdb;Persist Security Info=False";
+        private static string connectString = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=|DataDirectory|\DATABASE\Database_DT.accdb;Persist Security Info=False;Jet OLEDB:Database Password=123456";
         protected static OleDbConnection conn = null;
 
         //Thực hiện khởi tạo kết nối

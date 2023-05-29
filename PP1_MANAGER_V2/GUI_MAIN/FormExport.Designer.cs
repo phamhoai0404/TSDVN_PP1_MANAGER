@@ -55,10 +55,10 @@ namespace GUI_MAIN
             this.dtmFrom = new System.Windows.Forms.DateTimePicker();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.cmbAddress = new System.Windows.Forms.ComboBox();
+            this.btnRefresh = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.chkDate = new System.Windows.Forms.CheckBox();
-            this.btnRefresh = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.pnlMain.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -223,6 +223,7 @@ namespace GUI_MAIN
             // 
             // btnSearch
             // 
+            this.btnSearch.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnSearch.Location = new System.Drawing.Point(102, 186);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(124, 44);
@@ -233,6 +234,7 @@ namespace GUI_MAIN
             // 
             // btnExport
             // 
+            this.btnExport.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnExport.Location = new System.Drawing.Point(238, 186);
             this.btnExport.Name = "btnExport";
             this.btnExport.Size = new System.Drawing.Size(128, 44);
@@ -329,8 +331,20 @@ namespace GUI_MAIN
             this.cmbAddress.TabIndex = 13;
             this.cmbAddress.SelectedIndexChanged += new System.EventHandler(this.cmbAddress_SelectedIndexChanged);
             // 
+            // btnRefresh
+            // 
+            this.btnRefresh.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnRefresh.BackgroundImage")));
+            this.btnRefresh.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnRefresh.Location = new System.Drawing.Point(514, 186);
+            this.btnRefresh.Name = "btnRefresh";
+            this.btnRefresh.Size = new System.Drawing.Size(51, 44);
+            this.btnRefresh.TabIndex = 16;
+            this.btnRefresh.UseVisualStyleBackColor = true;
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
+            // 
             // btnClose
             // 
+            this.btnClose.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnClose.Location = new System.Drawing.Point(378, 186);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(118, 44);
@@ -359,17 +373,6 @@ namespace GUI_MAIN
             this.chkDate.Text = "Theo thời gian";
             this.chkDate.UseVisualStyleBackColor = true;
             this.chkDate.CheckedChanged += new System.EventHandler(this.chkDate_CheckedChanged);
-            // 
-            // btnRefresh
-            // 
-            this.btnRefresh.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnRefresh.BackgroundImage")));
-            this.btnRefresh.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnRefresh.Location = new System.Drawing.Point(514, 186);
-            this.btnRefresh.Name = "btnRefresh";
-            this.btnRefresh.Size = new System.Drawing.Size(51, 44);
-            this.btnRefresh.TabIndex = 16;
-            this.btnRefresh.UseVisualStyleBackColor = true;
-            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
             // frmFormExport
             // 

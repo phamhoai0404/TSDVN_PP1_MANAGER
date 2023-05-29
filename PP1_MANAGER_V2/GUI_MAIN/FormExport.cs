@@ -119,6 +119,12 @@ namespace GUI_MAIN
                     tempAdd = "\"Bộ phận:\"" + ",\"ALL\"";
                     csv.AppendLine(tempAdd);
                 }
+
+                if (!string.IsNullOrWhiteSpace(this.valueExport.keySearch))
+                {
+                    tempAdd = "\"Từ khóa tìm kiếm:\",\" " + this.valueExport.keySearch + "\"";
+                    csv.AppendLine(tempAdd);
+                }
                 if (this.valueExport.exportDate == true)
                 {
                     tempAdd = "\"Từ ngày:\"" + ",\"'" + this.valueExport.dateFrom?.ToString("dd/MM/yyyy") + "\"";
